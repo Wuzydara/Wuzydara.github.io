@@ -1791,3 +1791,1092 @@ function scrollToUnit(id, btn) {
 </html>
 
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure CSS — How Far Can We Go</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue: #6c8fff;
+  --blue2: #3d5af1;
+  --pink: #ff6bbd;
+  --green: #52e3a4;
+  --yellow: #ffd166;
+  --dark: #080b14;
+  --dark2: #0e1320;
+  --dark3: #141929;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--dark);
+  color: #e8eaf6;
+  overflow-x: hidden;
+}
+
+/* ── SECTION LABELS ── */
+.section {
+  padding: 100px 5vw;
+  border-bottom: 1px solid #1a1f35;
+  position: relative;
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.section-title {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.section-sub {
+  font-size: 15px;
+  color: #556;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 60px;
+}
+
+/* ════════════════════════════════════
+   1. HERO — animated mesh gradient
+═══════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10vw;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #1a1f35;
+}
+
+/* The animated blobs behind the hero */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: float 8s ease-in-out infinite;
+}
+.blob1 { width: 500px; height: 500px; background: var(--blue2); top: -100px; right: -100px; animation-delay: 0s; }
+.blob2 { width: 400px; height: 400px; background: var(--pink); bottom: -150px; left: -80px; animation-delay: -3s; }
+.blob3 { width: 300px; height: 300px; background: var(--green); top: 40%; right: 20%; animation-delay: -5s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+/* Animated grid background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(108,143,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,143,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(60px, 60px); }
+}
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-tag::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--blue);
+}
+
+.hero h1 {
+  font-size: clamp(48px, 9vw, 100px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -3px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* GLITCH EFFECT — pure CSS */
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.glitch::before {
+  color: var(--pink);
+  animation: glitch1 3s infinite linear;
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+}
+.glitch::after {
+  color: var(--blue);
+  animation: glitch2 3s infinite linear;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+}
+@keyframes glitch1 {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  91%           { transform: translate(-4px, 1px); opacity: 1; }
+  93%           { transform: translate(4px, -1px); opacity: 1; }
+  95%           { transform: translate(-2px, 0); opacity: 0; }
+}
+@keyframes glitch2 {
+  0%, 85%, 100% { transform: translate(0); opacity: 0; }
+  86%           { transform: translate(4px, 2px); opacity: 1; }
+  88%           { transform: translate(-4px, -1px); opacity: 1; }
+  90%           { transform: translate(0); opacity: 0; }
+}
+
+.hero-desc {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #6672aa;
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* TYPING CURSOR */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: var(--blue);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* CTA BUTTONS */
+.btn-row { display: flex; gap: 16px; flex-wrap: wrap; position: relative; }
+.btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+.btn:hover::after { transform: translateX(0); }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: var(--blue);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 0 30px rgba(108,143,255,0.4);
+}
+.btn-primary:hover { box-shadow: 0 0 50px rgba(108,143,255,0.6); }
+.btn-outline {
+  background: transparent;
+  color: #e8eaf6;
+  border: 1px solid #2a3050;
+}
+.btn-outline:hover { border-color: var(--blue); }
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #334;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--blue), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+
+/* ════════════════════════════════════
+   2. CARDS — Glassmorphism
+═══════════════════════════════════ */
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.glass-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(108,143,255,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.glass-card:hover::before { opacity: 1; }
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(108,143,255,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(108,143,255,0.1);
+}
+.card-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.card-desc { font-size: 14px; color: #667; line-height: 1.7; }
+.card-badge {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(108,143,255,0.12);
+  color: var(--blue);
+  border: 1px solid rgba(108,143,255,0.2);
+}
+
+/* ════════════════════════════════════
+   3. SKILL BARS — animated
+═══════════════════════════════════ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+.skill-item { margin-bottom: 24px; }
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.skill-name { font-weight: 700; color: #ccd; }
+.skill-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue); }
+.skill-track {
+  width: 100%;
+  height: 4px;
+  background: #1a1f35;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  border-radius: 4px;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: fillBar 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-play-state: paused;
+}
+.skill-fill.animate { animation-play-state: running; }
+
+/* Colorful fills */
+.fill-blue  { background: linear-gradient(90deg, var(--blue2), var(--blue)); }
+.fill-pink  { background: linear-gradient(90deg, #c026d3, var(--pink)); }
+.fill-green { background: linear-gradient(90deg, #059669, var(--green)); }
+.fill-yellow{ background: linear-gradient(90deg, #d97706, var(--yellow)); }
+
+@keyframes fillBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(var(--w)); }
+}
+
+/* ════════════════════════════════════
+   4. NEON BORDER CARDS
+═══════════════════════════════════ */
+.neon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.neon-card {
+  background: var(--dark2);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* The spinning neon border */
+.neon-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 70%, var(--neon-color) 80%, transparent 90%);
+  animation: spin 3s linear infinite;
+  z-index: 0;
+}
+.neon-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--dark2);
+  border-radius: 10px;
+  z-index: 1;
+}
+.neon-card > * { position: relative; z-index: 2; }
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  to { --angle: 360deg; }
+}
+.neon-card:nth-child(1) { --neon-color: #6c8fff; }
+.neon-card:nth-child(2) { --neon-color: #ff6bbd; animation-delay: -1s; }
+.neon-card:nth-child(3) { --neon-color: #52e3a4; animation-delay: -2s; }
+.neon-card:nth-child(4) { --neon-color: #ffd166; animation-delay: -0.5s; }
+.neon-num {
+  font-size: 38px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.neon-label { font-size: 12px; color: #556; letter-spacing: 1px; }
+
+/* ════════════════════════════════════
+   5. 3D FLIP CARDS
+═══════════════════════════════════ */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.flip-card {
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-card:hover .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  padding: 24px;
+  text-align: center;
+}
+.flip-front {
+  background: var(--dark3);
+  border: 1px solid #1e2540;
+}
+.flip-front-icon { font-size: 36px; margin-bottom: 14px; }
+.flip-front-title { font-size: 15px; font-weight: 700; color: #ccd; }
+.flip-back {
+  background: var(--blue2);
+  transform: rotateY(180deg);
+}
+.flip-back p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.85); }
+
+/* ════════════════════════════════════
+   6. TIMELINE — pure CSS
+═══════════════════════════════════ */
+.timeline {
+  position: relative;
+  padding-left: 60px;
+  max-width: 700px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--blue), transparent);
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+.tl-dot {
+  position: absolute;
+  left: -47px; top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px rgba(108,143,255,0.2), 0 0 12px var(--blue);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+.tl-item:nth-child(2) .tl-dot { background: var(--pink); box-shadow: 0 0 0 4px rgba(255,107,189,0.2), 0 0 12px var(--pink); }
+.tl-item:nth-child(3) .tl-dot { background: var(--green); box-shadow: 0 0 0 4px rgba(82,227,164,0.2), 0 0 12px var(--green); }
+.tl-item:nth-child(4) .tl-dot { background: var(--yellow); box-shadow: 0 0 0 4px rgba(255,209,102,0.2), 0 0 12px var(--yellow); }
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.3); }
+}
+.tl-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.tl-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.tl-desc { font-size: 14px; color: #667; line-height: 1.7; }
+
+/* ════════════════════════════════════
+   7. ANIMATED GRADIENT TEXT
+═══════════════════════════════════ */
+.gradient-text-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+.grad-text {
+  font-size: clamp(24px, 5vw, 56px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradShift 3s linear infinite;
+}
+.grad1 { background-image: linear-gradient(90deg, #6c8fff, #ff6bbd, #ffd166, #6c8fff); }
+.grad2 { background-image: linear-gradient(90deg, #52e3a4, #6c8fff, #52e3a4); animation-duration: 2s; }
+.grad3 { background-image: linear-gradient(90deg, #ffd166, #ff6bbd, #c77dff, #ffd166); animation-duration: 4s; }
+@keyframes gradShift {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+/* ════════════════════════════════════
+   8. FLOATING TAGS / PILLS
+═══════════════════════════════════ */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid #1e2540;
+  color: #8892b0;
+  cursor: default;
+  transition: all 0.3s;
+  animation: tagFloat var(--dur, 4s) ease-in-out infinite;
+  animation-delay: var(--del, 0s);
+}
+@keyframes tagFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+.tag:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(108,143,255,0.08);
+  transform: translateY(-4px) scale(1.05) !important;
+  box-shadow: 0 8px 24px rgba(108,143,255,0.2);
+}
+
+/* ════════════════════════════════════
+   9. CSS-ONLY LOADER SHOWCASE
+═══════════════════════════════════ */
+.loaders {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.loader-wrap { text-align: center; }
+.loader-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #334; margin-top: 16px; text-transform: uppercase; }
+
+/* Spinner */
+.spin-loader {
+  width: 48px; height: 48px;
+  border: 3px solid #1a1f35;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+/* Orbit */
+.orbit-loader {
+  width: 48px; height: 48px;
+  position: relative;
+}
+.orbit-loader::before, .orbit-loader::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.orbit-loader::before {
+  inset: 0;
+  border: 2px solid #1a1f35;
+  border-radius: 50%;
+}
+.orbit-loader::after {
+  width: 12px; height: 12px;
+  background: var(--blue);
+  top: -6px; left: 50%; margin-left: -6px;
+  transform-origin: 6px 30px;
+  animation: orbit 1.5s linear infinite;
+  box-shadow: 0 0 8px var(--blue);
+}
+@keyframes orbit { to { transform: rotate(360deg); } }
+
+/* Dots */
+.dots-loader { display: flex; gap: 6px; align-items: center; height: 48px; }
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  animation: dotBounce 1.2s ease-in-out infinite;
+}
+.dot:nth-child(1) { background: var(--blue); animation-delay: 0s; }
+.dot:nth-child(2) { background: var(--pink); animation-delay: 0.2s; }
+.dot:nth-child(3) { background: var(--green); animation-delay: 0.4s; }
+.dot:nth-child(4) { background: var(--yellow); animation-delay: 0.6s; }
+@keyframes dotBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+
+/* Pulse ring */
+.pulse-loader {
+  width: 48px; height: 48px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.pulse-loader::before, .pulse-loader::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--pink);
+  animation: pulseRing 2s ease-out infinite;
+}
+.pulse-loader::after { animation-delay: -1s; }
+.pulse-dot {
+  width: 12px; height: 12px;
+  background: var(--pink);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--pink);
+}
+@keyframes pulseRing {
+  0%   { width: 12px; height: 12px; opacity: 1; }
+  100% { width: 48px; height: 48px; opacity: 0; }
+}
+
+/* Bars */
+.bars-loader { display: flex; gap: 4px; align-items: flex-end; height: 48px; }
+.bar {
+  width: 6px;
+  border-radius: 3px;
+  animation: barGrow 1s ease-in-out infinite;
+}
+.bar:nth-child(1) { background: var(--blue);   height: 60%; animation-delay: 0s; }
+.bar:nth-child(2) { background: var(--blue);   height: 80%; animation-delay: 0.1s; }
+.bar:nth-child(3) { background: var(--blue);   height: 100%;animation-delay: 0.2s; }
+.bar:nth-child(4) { background: var(--blue);   height: 80%; animation-delay: 0.3s; }
+.bar:nth-child(5) { background: var(--blue);   height: 60%; animation-delay: 0.4s; }
+@keyframes barGrow {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+  50%       { transform: scaleY(1);   opacity: 1; }
+}
+
+/* ════════════════════════════════════
+   10. FOOTER CTA
+═══════════════════════════════════ */
+.footer-cta {
+  padding: 120px 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer-cta::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(108,143,255,0.12) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.footer-cta h2 {
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+}
+.footer-cta p {
+  font-size: 16px;
+  color: #556;
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer-note {
+  margin-top: 60px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #2a2f45;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  background: rgba(8,11,20,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 2px;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13px;
+  color: #556;
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.5px;
+}
+.nav-links a:hover { color: #e8eaf6; }
+
+/* ── HOVER COUNTER TRICK ── */
+.counter-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <span class="nav-logo">CSS.HEAVY</span>
+  <div class="nav-links">
+    <a href="#glass">Glass</a>
+    <a href="#neon">Neon</a>
+    <a href="#flip">3D Flip</a>
+    <a href="#loaders">Loaders</a>
+    <a href="#gradient">Gradient</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="hero-tag">Pure HTML & CSS — No libraries</div>
+  <h1>
+    <span class="glitch" data-text="How Far">How Far</span><br>
+    Can We Go?
+  </h1>
+  <p class="hero-desc">
+    Everything you see here — the glow, the 3D flip, the spinning borders, the glitch, the floating blobs — is just CSS. Zero JavaScript for visuals.<span class="cursor"></span>
+  </p>
+  <div class="btn-row">
+    <a href="#glass" class="btn btn-primary">Explore ↓</a>
+    <a href="#loaders" class="btn btn-outline">See Loaders</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GLASSMORPHISM CARDS
+══════════════════════════════════ -->
+<section class="section" id="glass">
+  <p class="section-label">Effect 01</p>
+  <h2 class="section-title">Glassmorphism</h2>
+  <p class="section-sub">Cards with blur, transparency and mouse-tracking glow. The hover glow follows your cursor using a CSS trick with custom properties.</p>
+  <div class="glass-grid">
+    <div class="glass-card" onmousemove="trackMouse(this,event)">
+      <div class="card-icon" style="background:rgba(108,143,255,0.12)">🧠</div>
+      <div class="card-title">Machine Learning</div>
+      <div class="card-desc">Building models that learn from data to make predictions and decisions without explicit programming.</div>
+      <span class="card-badge">AI / ML</span>
+    </div>
+    <div class="glass-card" onmousemove="trackMouse(this,event)">
+      <div class="card-icon" style="background:rgba(255,107,189,0.12)">⚡</div>
+      <div class="card-title">Web Performance</div>
+      <div class="card-desc">Optimizing load times, rendering, and runtime performance for fast, smooth user experiences.</div>
+      <span class="card-badge" style="background:rgba(255,107,189,0.1);color:#ff6bbd;border-color:rgba(255,107,189,0.2)">Optimization</span>
+    </div>
+    <div class="glass-card" onmousemove="trackMouse(this,event)">
+      <div class="card-icon" style="background:rgba(82,227,164,0.12)">🔐</div>
+      <div class="card-title">Cryptography</div>
+      <div class="card-desc">Protecting information through encryption, hashing, and digital signatures.</div>
+      <span class="card-badge" style="background:rgba(82,227,164,0.1);color:#52e3a4;border-color:rgba(82,227,164,0.2)">Security</span>
+    </div>
+    <div class="glass-card" onmousemove="trackMouse(this,event)">
+      <div class="card-icon" style="background:rgba(255,209,102,0.12)">📡</div>
+      <div class="card-title">Networking</div>
+      <div class="card-desc">Protocols, routing, TCP/IP — how data travels across the internet and local networks.</div>
+      <span class="card-badge" style="background:rgba(255,209,102,0.1);color:#ffd166;border-color:rgba(255,209,102,0.2)">Systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     NEON SPINNING BORDER
+══════════════════════════════════ -->
+<section class="section" id="neon">
+  <p class="section-label">Effect 02</p>
+  <h2 class="section-title">Neon Spinning Borders</h2>
+  <p class="section-sub">A conic-gradient rotates around the card border using @property — a newer CSS feature. No JS, no SVG, just a spinning gradient.</p>
+  <div class="neon-grid">
+    <div class="neon-card">
+      <div class="neon-num">48</div>
+      <div class="neon-label">Questions covered</div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-num">5</div>
+      <div class="neon-label">Units</div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-num">100%</div>
+      <div class="neon-label">Pure HTML</div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-num">0</div>
+      <div class="neon-label">Libraries used</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     3D FLIP CARDS
+══════════════════════════════════ -->
+<section class="section" id="flip">
+  <p class="section-label">Effect 03</p>
+  <h2 class="section-title">3D Flip Cards</h2>
+  <p class="section-sub">Hover to flip. This is pure CSS 3D — transform-style: preserve-3d and perspective. No JavaScript at all.</p>
+  <div class="flip-grid">
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-icon">🌊</div>
+          <div class="flip-front-title">Waterfall Model</div>
+        </div>
+        <div class="flip-back">
+          <p>Linear, sequential phases. Each phase must finish before the next starts. Simple but rigid.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-icon">🔄</div>
+          <div class="flip-front-title">Agile Model</div>
+        </div>
+        <div class="flip-back" style="background:#1D9E75">
+          <p>Iterative sprints with continuous feedback. Flexible to change. Best for evolving projects.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-icon">🌀</div>
+          <div class="flip-front-title">Spiral Model</div>
+        </div>
+        <div class="flip-back" style="background:#993556">
+          <p>Risk-driven iterations. Each loop: plan → risk analysis → build → evaluate. By Barry Boehm.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-icon">✅</div>
+          <div class="flip-front-title">V-Model</div>
+        </div>
+        <div class="flip-back" style="background:#7c3aed">
+          <p>Each dev phase has a corresponding test phase. Verification + Validation at every step.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SKILL BARS
+══════════════════════════════════ -->
+<section class="section" id="skills">
+  <p class="section-label">Effect 04</p>
+  <h2 class="section-title">Animated Skill Bars</h2>
+  <p class="section-sub">CSS animations triggered by an IntersectionObserver (3 lines of JS). The bars fill using scaleX transform — smoother than width animation.</p>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">HTML & CSS</span><span class="skill-pct">95%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-blue" style="--w:0.95" data-skill></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-pct">78%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-yellow" style="--w:0.78" data-skill></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Software Engineering</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-green" style="--w:0.90" data-skill></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Data Structures</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-pink" style="--w:0.85" data-skill></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Operating Systems</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-blue" style="--w:0.80" data-skill></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Discrete Mathematics</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill fill-yellow" style="--w:0.75" data-skill></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CSS LOADERS
+══════════════════════════════════ -->
+<section class="section" id="loaders">
+  <p class="section-label">Effect 05</p>
+  <h2 class="section-title">Pure CSS Loaders</h2>
+  <p class="section-sub">Five different loading animations. Spinners, orbits, bouncing dots, pulse rings, audio bars — all @keyframes, zero JS.</p>
+  <div class="loaders">
+    <div class="loader-wrap">
+      <div class="spin-loader"></div>
+      <div class="loader-label">Spinner</div>
+    </div>
+    <div class="loader-wrap">
+      <div class="orbit-loader"></div>
+      <div class="loader-label">Orbit</div>
+    </div>
+    <div class="loader-wrap">
+      <div class="dots-loader">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="loader-label">Bounce</div>
+    </div>
+    <div class="loader-wrap">
+      <div class="pulse-loader"><div class="pulse-dot"></div></div>
+      <div class="loader-label">Pulse</div>
+    </div>
+    <div class="loader-wrap">
+      <div class="bars-loader">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <div class="loader-label">Audio</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ANIMATED GRADIENT TEXT
+══════════════════════════════════ -->
+<section class="section" id="gradient">
+  <p class="section-label">Effect 06</p>
+  <h2 class="section-title">Gradient Text</h2>
+  <p class="section-sub">background-clip: text with an animated background-position. The text itself is transparent — the gradient shows through.</p>
+  <div class="gradient-text-demo">
+    <span class="grad-text grad1">Dara.</span>
+    <span class="grad-text grad2">Developer.</span>
+    <span class="grad-text grad3">CS Student.</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TIMELINE
+══════════════════════════════════ -->
+<section class="section" id="timeline">
+  <p class="section-label">Effect 07</p>
+  <h2 class="section-title">Animated Timeline</h2>
+  <p class="section-sub">A vertical line with pulsing glowing dots. Fully CSS — the glow uses box-shadow, the pulse uses @keyframes scale.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2022</div>
+      <div class="tl-title">Started Computer Science</div>
+      <div class="tl-desc">Began the journey into algorithms, data structures, and the fascinating world of software engineering.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2023</div>
+      <div class="tl-title">First Web Project</div>
+      <div class="tl-desc">Built a portfolio using pure HTML & CSS. Discovered that you don't always need a framework to make things look great.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2024</div>
+      <div class="tl-title">Deep Dive into OS & Networks</div>
+      <div class="tl-desc">Studied process synchronization, memory management, file systems, and IPC mechanisms.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2026</div>
+      <div class="tl-title">Built an SE Exam Guide</div>
+      <div class="tl-desc">Created a 48-question interactive study guide in pure HTML that looks this cool. Exam szn.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FLOATING TAGS
+══════════════════════════════════ -->
+<section class="section">
+  <p class="section-label">Effect 08</p>
+  <h2 class="section-title">Floating Tags</h2>
+  <p class="section-sub">Each tag bobs at a different speed using CSS animation-duration and animation-delay variables. Hover to see the glow effect.</p>
+  <div class="tags-cloud">
+    <span class="tag" style="--dur:3.8s;--del:0s">HTML</span>
+    <span class="tag" style="--dur:4.2s;--del:-1s">CSS</span>
+    <span class="tag" style="--dur:3.5s;--del:-2s">JavaScript</span>
+    <span class="tag" style="--dur:5s;--del:-0.5s">Python</span>
+    <span class="tag" style="--dur:3.9s;--del:-1.5s">OS</span>
+    <span class="tag" style="--dur:4.5s;--del:-0.2s">Algorithms</span>
+    <span class="tag" style="--dur:3.7s;--del:-2.5s">Data Structures</span>
+    <span class="tag" style="--dur:4.1s;--del:-0.8s">Networks</span>
+    <span class="tag" style="--dur:5.2s;--del:-1.8s">Discrete Math</span>
+    <span class="tag" style="--dur:3.6s;--del:-0.3s">Git</span>
+    <span class="tag" style="--dur:4.8s;--del:-2.2s">Linux</span>
+    <span class="tag" style="--dur:3.3s;--del:-1.2s">UML</span>
+    <span class="tag" style="--dur:4.6s;--del:-0.7s">SQL</span>
+    <span class="tag" style="--dur:5.1s;--del:-3s">SDLC</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER CTA
+══════════════════════════════════ -->
+<div class="footer-cta">
+  <h2>All of this.<br><span style="background:linear-gradient(90deg,#6c8fff,#ff6bbd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Just HTML.</span></h2>
+  <p>No React. No Vue. No Three.js. No canvas. Pure CSS and a tiny sprinkle of JS for scroll detection.</p>
+  <div style="display:flex;justify-content:center">
+    <a href="#" class="btn btn-primary">Back to top ↑</a>
+  </div>
+  <div class="footer-note">Made with ♥ and zero npm install</div>
+</div>
+
+<script>
+// Mouse tracking for glass cards (the ONLY JS for a visual effect)
+function trackMouse(el, e) {
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+  el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+}
+
+// Skill bars — trigger animation when scrolled into view
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+}, { threshold: 0.3 });
+document.querySelectorAll('[data-skill]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
