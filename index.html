@@ -94,5 +94,1705 @@
     <p class="bio">lets see</p>
   </section>
 </body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Engineering — Complete Exam Answers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f1a;
+    --surface: #131627;
+    --card: #181c30;
+    --border: #252a45;
+    --accent: #6c8fff;
+    --accent2: #ff7eb3;
+    --accent3: #52e3a4;
+    --accent4: #ffd166;
+    --text: #e8eaf6;
+    --text-muted: #8892b0;
+    --text-dim: #4a5270;
+    --unit-colors: #6c8fff, #ff7eb3, #52e3a4, #ffd166, #c77dff;
+  }
 
-</html>>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d0f1a 0%, #131b3a 50%, #0d1f2d 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,143,255,0.12) 0%, transparent 70%);
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(108,143,255,0.3);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #fff;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* NAV */
+  .unit-nav {
+    display: flex;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none;
+  }
+  .unit-nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    background: rgba(108,143,255,0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* UNIT SECTION */
+  .unit-section { margin-top: 60px; }
+  .unit-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .unit-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.15;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .unit-title-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #fff;
+  }
+  .unit-title-block p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .unit-accent-bar {
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .q-card:hover { border-color: rgba(108,143,255,0.35); }
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #000;
+  }
+  .q-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .q-toggle {
+    font-size: 18px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    margin-top: 1px;
+  }
+  .q-card.open .q-toggle { transform: rotate(180deg); }
+  .q-body {
+    display: none;
+    padding: 0 22px 22px;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.2s ease;
+  }
+  .q-card.open .q-body { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* CONTENT STYLES */
+  .q-body p { margin: 12px 0; color: var(--text); font-size: 15px; }
+  .q-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--accent);
+    margin: 18px 0 8px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .q-body h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 16px 0 6px;
+  }
+  .q-body ul, .q-body ol {
+    margin: 8px 0 8px 20px;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .q-body li { margin: 5px 0; }
+  .q-body strong { color: var(--accent3); font-weight: 600; }
+  .q-body em { color: var(--accent4); font-style: italic; }
+
+  /* TABLE */
+  .q-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .q-body th {
+    background: rgba(108,143,255,0.15);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  .q-body td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .q-body tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* DIAGRAM BOX */
+  .diagram {
+    background: #0a0d1a;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent3);
+    white-space: pre;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: rgba(108,143,255,0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .highlight-box.green { background: rgba(82,227,164,0.07); border-color: var(--accent3); }
+  .highlight-box.yellow { background: rgba(255,209,102,0.07); border-color: var(--accent4); }
+  .highlight-box.pink { background: rgba(255,126,179,0.07); border-color: var(--accent2); }
+
+  /* UNIT COLOR VARS */
+  .u1 { --uc: #6c8fff; }
+  .u2 { --uc: #ff7eb3; }
+  .u3 { --uc: #52e3a4; }
+  .u4 { --uc: #ffd166; }
+  .u5 { --uc: #c77dff; }
+
+  .unit-accent-bar { background: var(--uc); }
+  .u1 .unit-num, .u1 .unit-title-block h2 { color: var(--uc); }
+  .u2 .unit-num, .u2 .unit-title-block h2 { color: var(--uc); }
+  .u3 .unit-num, .u3 .unit-title-block h2 { color: var(--uc); }
+  .u4 .unit-num, .u4 .unit-title-block h2 { color: var(--uc); }
+  .u5 .unit-num, .u5 .unit-title-block h2 { color: var(--uc); }
+
+  .u1 .q-header:hover .q-title { color: #6c8fff; }
+  .u2 .q-header:hover .q-title { color: #ff7eb3; }
+  .u3 .q-header:hover .q-title { color: #52e3a4; }
+  .u4 .q-header:hover .q-title { color: #ffd166; }
+  .u5 .q-header:hover .q-title { color: #c77dff; }
+
+  .badge-u1 { background: #6c8fff; }
+  .badge-u2 { background: #ff7eb3; }
+  .badge-u3 { background: #52e3a4; }
+  .badge-u4 { background: #ffd166; }
+  .badge-u5 { background: #c77dff; }
+
+  /* EXPAND ALL BTN */
+  .expand-all-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: auto;
+  }
+  .expand-all-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 30px; }
+    .container { padding: 0 14px 60px; }
+    .q-header { padding: 14px 16px; }
+    .q-body { padding: 0 16px 18px; }
+    .diagram { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">📚 Exam Preparation Guide</div>
+  <h1>Software <span>Engineering</span></h1>
+  <p class="hero-sub">UNITS I – V &nbsp;·&nbsp; Complete Long Answers &nbsp;·&nbsp; 2026</p>
+</div>
+
+<nav class="unit-nav">
+  <button class="nav-btn active" onclick="scrollToUnit('u1',this)">Unit I: Intro</button>
+  <button class="nav-btn" onclick="scrollToUnit('u2',this)">Unit II: Requirements</button>
+  <button class="nav-btn" onclick="scrollToUnit('u3',this)">Unit III: Design & UML</button>
+  <button class="nav-btn" onclick="scrollToUnit('u4',this)">Unit IV: Testing</button>
+  <button class="nav-btn" onclick="scrollToUnit('u5',this)">Unit V: Risk & Quality</button>
+  <button class="expand-all-btn" id="expandAllBtn" onclick="toggleAll()">Expand All ▾</button>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════ UNIT I ═══════════════ -->
+<section class="unit-section u1" id="u1">
+  <div class="unit-header">
+    <div class="unit-num">I</div>
+    <div class="unit-title-block">
+      <h2>Introduction to Software Engineering</h2>
+      <p>10 Questions Covered</p>
+    </div>
+    <div class="unit-accent-bar"></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q1</span>
+      <span class="q-title">Explain Software Engineering Layered Technology with Diagram</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software engineering is a layered technology that rests on a quality focus. Every layer supports all layers above it.</p>
+      <div class="diagram">
+┌─────────────────────────────────────────────────────────┐
+│                       TOOLS                             │  ← Automated tools (CASE tools, IDEs)
+├─────────────────────────────────────────────────────────┤
+│                      METHODS                            │  ← How-to techniques (design, coding, testing)
+├─────────────────────────────────────────────────────────┤
+│                      PROCESS                            │  ← Framework for delivering software
+├─────────────────────────────────────────────────────────┤
+│               A QUALITY FOCUS (Foundation)              │  ← Commitment to quality at every step
+└─────────────────────────────────────────────────────────┘</div>
+      <h3>Layer Descriptions</h3>
+      <ul>
+        <li><strong>Quality Focus:</strong> The foundation. It drives the culture of continuous improvement and produces software that meets user needs reliably.</li>
+        <li><strong>Process Layer:</strong> Defines the framework — phases, deliverables, milestones, and quality assurance checkpoints. Examples: Waterfall, Agile, Spiral.</li>
+        <li><strong>Methods Layer:</strong> Provides technical know-how for analysis, design, coding, testing, and maintenance.</li>
+        <li><strong>Tools Layer:</strong> Provides semi-automated or automated support for process and methods. E.g., Visual Studio, JIRA, Selenium.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q2</span>
+      <span class="q-title">Discuss Software Development Life Cycle (SDLC)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>SDLC is a systematic process for planning, creating, testing, and delivering software. It provides a well-structured flow of phases to ensure quality and correctness of the final product.</p>
+      <h3>Phases of SDLC</h3>
+      <ol>
+        <li><strong>Planning:</strong> Define scope, cost estimation, feasibility analysis, and resource allocation.</li>
+        <li><strong>Requirements Analysis:</strong> Gather and document functional and non-functional requirements from stakeholders.</li>
+        <li><strong>System Design:</strong> Convert requirements into architecture — HLD (High Level Design) and LLD (Low Level Design).</li>
+        <li><strong>Implementation (Coding):</strong> Developers write code based on design documents using chosen language/tools.</li>
+        <li><strong>Testing:</strong> Verify and validate the system (unit, integration, system, acceptance testing).</li>
+        <li><strong>Deployment:</strong> Release the product to the production environment.</li>
+        <li><strong>Maintenance:</strong> Fix bugs, add features, improve performance post-deployment.</li>
+      </ol>
+      <div class="highlight-box">
+        <strong>Key SDLC Models:</strong> Waterfall, Iterative, Spiral, Agile, V-Model, Big Bang.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q3</span>
+      <span class="q-title">Explain Waterfall Model with Advantages & Disadvantages</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>The Waterfall model is a linear-sequential life cycle model where each phase must be completed before the next begins, with no overlap.</p>
+      <div class="diagram">
+  [Requirements]
+        ↓
+  [System Design]
+        ↓
+  [Implementation]
+        ↓
+  [Integration & Testing]
+        ↓
+  [Deployment]
+        ↓
+  [Maintenance]</div>
+      <h4>Advantages</h4>
+      <ul>
+        <li>Simple and easy to understand and manage.</li>
+        <li>Phases are clearly defined with specific deliverables.</li>
+        <li>Works well for small projects with clear requirements.</li>
+        <li>Easy to measure progress through milestones.</li>
+        <li>Extensive documentation maintained at every stage.</li>
+      </ul>
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Not suitable for complex or long-duration projects.</li>
+        <li>Difficult to accommodate changing requirements midway.</li>
+        <li>Testing only begins after development is complete — late bug discovery.</li>
+        <li>No working software until late in the lifecycle.</li>
+        <li>Risk of requirement misunderstanding is high.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q4</span>
+      <span class="q-title">Explain Spiral Model with Risk Analysis</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>The Spiral model, proposed by Barry Boehm (1988), combines the iterative nature of prototyping with the systematic aspects of the Waterfall model. It emphasizes <strong>risk analysis</strong>.</p>
+      <div class="diagram">
+           Plan       →    Risk Analysis
+             ↑                  ↓
+         Evaluate     ←    Engineering
+                  (Next Spiral)</div>
+      <h3>Four Quadrants of Each Spiral</h3>
+      <ol>
+        <li><strong>Planning:</strong> Determine objectives, alternatives, and constraints.</li>
+        <li><strong>Risk Analysis:</strong> Identify and resolve risks (the most critical phase). Prototyping is used here.</li>
+        <li><strong>Engineering:</strong> Develop and test the product of that iteration.</li>
+        <li><strong>Evaluation:</strong> Customer evaluates the output and plans for next iteration.</li>
+      </ol>
+      <h3>Risk Analysis in Spiral</h3>
+      <p>Risk is identified at every loop. If risk cannot be resolved, the project may be <em>terminated early</em> to avoid costly failure. This makes the Spiral model ideal for large, high-risk, mission-critical projects.</p>
+      <h4>Advantages</h4>
+      <ul>
+        <li>Best for large, complex projects with high risk.</li>
+        <li>Continuous risk management at every phase.</li>
+        <li>Allows for customer feedback in each iteration.</li>
+        <li>Combines prototyping and systematic approach.</li>
+      </ul>
+      <h4>Disadvantages</h4>
+      <ul>
+        <li>Costly model — not suitable for small projects.</li>
+        <li>Risk analysis requires highly specific expertise.</li>
+        <li>Number of stages unknown in advance.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q5</span>
+      <span class="q-title">Compare Waterfall vs Agile Model</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Parameter</th><th>Waterfall</th><th>Agile</th></tr>
+        <tr><td>Approach</td><td>Sequential, linear</td><td>Iterative, incremental</td></tr>
+        <tr><td>Flexibility</td><td>Rigid — changes not welcomed</td><td>Highly flexible to change</td></tr>
+        <tr><td>Delivery</td><td>Single final delivery</td><td>Incremental working software</td></tr>
+        <tr><td>Customer Involvement</td><td>Only at start and end</td><td>Continuous collaboration</td></tr>
+        <tr><td>Testing</td><td>After development phase</td><td>Throughout every sprint</td></tr>
+        <tr><td>Documentation</td><td>Extensive</td><td>Minimal, just enough</td></tr>
+        <tr><td>Best For</td><td>Small, well-defined projects</td><td>Dynamic, evolving projects</td></tr>
+        <tr><td>Risk</td><td>High (late testing)</td><td>Low (continuous testing)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q6</span>
+      <span class="q-title">Explain Agile Methodology Principles</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Agile is an iterative software development approach based on the <strong>Agile Manifesto (2001)</strong>, which values:</p>
+      <div class="highlight-box">
+        Individuals & Interactions over processes and tools<br>
+        Working Software over comprehensive documentation<br>
+        Customer Collaboration over contract negotiation<br>
+        Responding to Change over following a plan
+      </div>
+      <h3>12 Principles of Agile</h3>
+      <ol>
+        <li>Customer satisfaction through early and continuous delivery.</li>
+        <li>Welcome changing requirements, even late in development.</li>
+        <li>Deliver working software frequently (weeks, not months).</li>
+        <li>Business people and developers must work together daily.</li>
+        <li>Build projects around motivated individuals.</li>
+        <li>Face-to-face conversation is the best form of communication.</li>
+        <li>Working software is the primary measure of progress.</li>
+        <li>Agile promotes sustainable development.</li>
+        <li>Continuous attention to technical excellence.</li>
+        <li>Simplicity — maximizing work NOT done.</li>
+        <li>Self-organizing teams produce best architectures.</li>
+        <li>Regular reflection on how to become more effective.</li>
+      </ol>
+      <p>Popular Agile frameworks: <strong>Scrum</strong>, <strong>Kanban</strong>, <strong>XP (Extreme Programming)</strong>, <strong>SAFe</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q7</span>
+      <span class="q-title">What are Software Myths? Explain Types</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software myths are misleading beliefs and attitudes about software and the software development process that cause project failures.</p>
+      <h3>1. Management Myths</h3>
+      <ul>
+        <li>"We have a book full of standards — that's enough." (Standards ≠ quality practice)</li>
+        <li>"Adding more people to a late project will speed it up." (Brook's Law: adding manpower to a late project makes it later.)</li>
+        <li>"We have the tools and computers, so we have everything." (Tools alone do not produce quality software.)</li>
+      </ul>
+      <h3>2. Customer Myths</h3>
+      <ul>
+        <li>"A general statement of objectives is sufficient to start writing programs." (Vague requirements lead to failures.)</li>
+        <li>"Software requirements continually change, but change can be easily accommodated." (Changes have significant cost and time impact.)</li>
+      </ul>
+      <h3>3. Practitioner Myths</h3>
+      <ul>
+        <li>"Once we write the program and get it to work, our job is done." (Maintenance takes 60-80% of effort.)</li>
+        <li>"Quality can be checked in by testing." (Quality must be built in from the start.)</li>
+        <li>"Until the program runs, there is no way to assess its quality." (Reviews and inspections are equally effective.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q8</span>
+      <span class="q-title">Explain Process Framework Activities (Umbrella Activities)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Framework Activities (Core)</h3>
+      <ol>
+        <li><strong>Communication:</strong> Understand objectives and gather requirements from stakeholders.</li>
+        <li><strong>Planning:</strong> Define tasks, schedule, resources, risk assessment.</li>
+        <li><strong>Modeling:</strong> Create models to understand requirements and design.</li>
+        <li><strong>Construction:</strong> Code generation and testing.</li>
+        <li><strong>Deployment:</strong> Deliver and get feedback.</li>
+      </ol>
+      <h3>Umbrella Activities (Applied throughout all phases)</h3>
+      <ul>
+        <li><strong>Software project tracking and control</strong></li>
+        <li><strong>Risk management</strong></li>
+        <li><strong>Software quality assurance (SQA)</strong></li>
+        <li><strong>Technical reviews</strong></li>
+        <li><strong>Measurement</strong></li>
+        <li><strong>Software configuration management (SCM)</strong></li>
+        <li><strong>Reusability management</strong></li>
+        <li><strong>Work product preparation and production</strong></li>
+      </ul>
+      <div class="highlight-box green">Umbrella activities are <strong>cross-cutting concerns</strong> that ensure software quality, tracking, and management across all phases of the process framework.</div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q9</span>
+      <span class="q-title">What is CMMI (Capability Maturity Model Integration)?</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>CMMI is a process improvement framework developed by the <strong>Software Engineering Institute (SEI), Carnegie Mellon</strong>. It defines the maturity of an organization's software processes across 5 levels.</p>
+      <h3>CMMI 5 Maturity Levels</h3>
+      <table>
+        <tr><th>Level</th><th>Name</th><th>Description</th></tr>
+        <tr><td>1</td><td>Initial</td><td>Processes are unpredictable, poorly controlled and reactive.</td></tr>
+        <tr><td>2</td><td>Managed</td><td>Projects are planned, performed, measured and controlled.</td></tr>
+        <tr><td>3</td><td>Defined</td><td>Organization-wide standards for processes are documented.</td></tr>
+        <tr><td>4</td><td>Quantitatively Managed</td><td>Processes are controlled using statistical and quantitative techniques.</td></tr>
+        <tr><td>5</td><td>Optimizing</td><td>Continuous process improvement through innovation and feedback.</td></tr>
+      </table>
+      <p>CMMI helps organizations improve process performance, reduce defects, and deliver software on schedule and budget. It is used during appraisals to rate an organization's capability.</p>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card u1">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u1">Q10</span>
+      <span class="q-title">Evolution of Software Engineering</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Era</th><th>Period</th><th>Key Features</th></tr>
+        <tr><td>First Generation</td><td>1950s–60s</td><td>Batch processing, assembly language, no formal methods, single user.</td></tr>
+        <tr><td>Second Generation</td><td>1960s–70s</td><td>Multi-user systems, time-sharing, database systems, "Software Crisis" emerged.</td></tr>
+        <tr><td>Third Generation</td><td>1970s–90s</td><td>Distributed computing, OOP, structured programming, CASE tools.</td></tr>
+        <tr><td>Fourth Generation</td><td>1990s–2000s</td><td>Client-server, the Internet, component-based software, web applications.</td></tr>
+        <tr><td>Fifth Generation</td><td>2000s–now</td><td>Mobile, cloud computing, AI/ML integration, microservices, DevOps, Agile.</td></tr>
+      </table>
+      <div class="highlight-box yellow">The <strong>Software Crisis (1960s)</strong> was a major turning point — projects were running over budget, over schedule, and delivering unreliable software, which led to the formal birth of Software Engineering as a discipline (NATO Conference, 1968).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ UNIT II ═══════════════ -->
+<section class="unit-section u2" id="u2">
+  <div class="unit-header">
+    <div class="unit-num">II</div>
+    <div class="unit-title-block">
+      <h2>Software Requirements</h2>
+      <p>10 Questions Covered</p>
+    </div>
+    <div class="unit-accent-bar"></div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q1</span>
+      <span class="q-title">Explain Functional vs Non-Functional Requirements</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Functional Requirements (FR)</h3>
+      <p>Functional requirements describe <strong>what the system should do</strong> — the functions, features, and behaviors of the system.</p>
+      <ul>
+        <li>User login and authentication</li>
+        <li>Process payment transactions</li>
+        <li>Generate sales reports</li>
+        <li>Send email notifications</li>
+      </ul>
+      <h3>Non-Functional Requirements (NFR)</h3>
+      <p>NFRs describe <strong>how the system should perform</strong> — quality attributes, constraints, and system properties.</p>
+      <table>
+        <tr><th>Type</th><th>Example</th></tr>
+        <tr><td>Performance</td><td>System must respond within 2 seconds</td></tr>
+        <tr><td>Security</td><td>Data must be encrypted using AES-256</td></tr>
+        <tr><td>Reliability</td><td>System uptime must be 99.9%</td></tr>
+        <tr><td>Scalability</td><td>Must handle 10,000 concurrent users</td></tr>
+        <tr><td>Usability</td><td>Interface must be learnable in 30 min</td></tr>
+        <tr><td>Portability</td><td>Run on Windows, Linux, and macOS</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q2</span>
+      <span class="q-title">Explain Software Requirement Specification (SRS)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>An SRS is a formal document that describes the intended behavior of a software system. It serves as a contract between customer and developer.</p>
+      <h3>Structure of SRS (IEEE 830)</h3>
+      <ol>
+        <li>Introduction (purpose, scope, definitions)</li>
+        <li>Overall Description (product perspective, functions, user characteristics)</li>
+        <li>Specific Requirements (functional, non-functional, interface requirements)</li>
+        <li>Appendices and Index</li>
+      </ol>
+      <h3>Characteristics of a Good SRS</h3>
+      <ul>
+        <li><strong>Correct:</strong> Every requirement is accurately stated.</li>
+        <li><strong>Unambiguous:</strong> Each requirement has only one interpretation.</li>
+        <li><strong>Complete:</strong> All relevant requirements are included.</li>
+        <li><strong>Consistent:</strong> No conflicting requirements.</li>
+        <li><strong>Verifiable:</strong> Requirements can be tested.</li>
+        <li><strong>Modifiable:</strong> Easy to change in a structured way.</li>
+        <li><strong>Traceable:</strong> Each requirement can be traced to its origin.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q3</span>
+      <span class="q-title">Explain Requirements Engineering Process</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Requirements Engineering (RE) is the process of defining, documenting, and maintaining requirements. It involves the following systematic activities:</p>
+      <div class="diagram">
+[Feasibility Study] → [Elicitation] → [Analysis] → [Specification] → [Validation] → [Management]</div>
+      <ol>
+        <li><strong>Feasibility Study:</strong> Determine if the system is technically, financially, and operationally feasible.</li>
+        <li><strong>Requirements Elicitation:</strong> Gather requirements from stakeholders using interviews, questionnaires, observation, prototyping, etc.</li>
+        <li><strong>Requirements Analysis:</strong> Analyze for completeness, conflicts, and ambiguity. Build domain models.</li>
+        <li><strong>Requirements Specification:</strong> Document the requirements clearly in an SRS.</li>
+        <li><strong>Requirements Validation:</strong> Verify the SRS is correct, consistent, and complete via reviews or prototyping.</li>
+        <li><strong>Requirements Management:</strong> Track and control changes to requirements throughout the project.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q4</span>
+      <span class="q-title">Explain Requirements Elicitation Techniques</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Requirements Elicitation is the process of <strong>discovering requirements</strong> from various sources — stakeholders, users, existing documents.</p>
+      <h3>Techniques</h3>
+      <ul>
+        <li><strong>Interviews:</strong> Direct Q&A with stakeholders. Can be structured (fixed questions) or unstructured (open-ended).</li>
+        <li><strong>Questionnaires/Surveys:</strong> Collect data from many users simultaneously. Cost-effective for large groups.</li>
+        <li><strong>Observation:</strong> Analyst observes users performing tasks to understand implicit requirements.</li>
+        <li><strong>Brainstorming:</strong> Group discussion to generate ideas and requirements freely.</li>
+        <li><strong>Prototyping:</strong> Build a rough model; user feedback on prototype reveals hidden requirements.</li>
+        <li><strong>Use Case Analysis:</strong> Identify actors and use cases to model system interactions.</li>
+        <li><strong>JAD (Joint Application Development):</strong> Structured workshops with developers and users together.</li>
+        <li><strong>Document Analysis:</strong> Review existing systems, forms, and reports.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q5</span>
+      <span class="q-title">Explain Feasibility Study (Technical, Economic, Operational)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A feasibility study evaluates whether a proposed system is viable before committing resources.</p>
+      <h3>Types of Feasibility</h3>
+      <ul>
+        <li><strong>Technical Feasibility:</strong> Can the system be built with available technology, hardware, and software? Examines technical complexity, availability of tools, and team expertise.</li>
+        <li><strong>Economic (Financial) Feasibility:</strong> Is the project worth the investment? Involves cost-benefit analysis, ROI calculation, and budget estimation. Uses techniques like NPV, IRR, Payback Period.</li>
+        <li><strong>Operational Feasibility:</strong> Will the system work in the organization's current environment? Considers user acceptance, training needs, management support, and workflow changes.</li>
+        <li><strong>Legal Feasibility:</strong> Does the system comply with laws and regulations (GDPR, copyright, etc.)?</li>
+        <li><strong>Schedule Feasibility:</strong> Can the system be delivered within the required timeframe?</li>
+      </ul>
+      <div class="highlight-box pink">Output of feasibility study: a <strong>Feasibility Report</strong> that recommends whether to proceed, modify, or abandon the project.</div>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q6</span>
+      <span class="q-title">Explain Requirements Validation & Verification</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Requirements Validation</h3>
+      <p><em>"Are we building the RIGHT system?"</em> — Ensures the SRS accurately reflects the customer's needs.</p>
+      <ul>
+        <li>Conducted with stakeholders and customers.</li>
+        <li>Techniques: Reviews, walkthroughs, prototyping, test case generation.</li>
+      </ul>
+      <h3>Requirements Verification</h3>
+      <p><em>"Are we building the system RIGHT?"</em> — Checks consistency, completeness, and correctness of requirements.</p>
+      <ul>
+        <li>Done internally by the development team.</li>
+        <li>Techniques: Formal inspections, checklists, model checking.</li>
+      </ul>
+      <table>
+        <tr><th>Aspect</th><th>Validation</th><th>Verification</th></tr>
+        <tr><td>Focus</td><td>Customer needs</td><td>Specifications correctness</td></tr>
+        <tr><td>Done by</td><td>Customers + Developers</td><td>Development team</td></tr>
+        <tr><td>Question</td><td>Right product?</td><td>Product right?</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q7</span>
+      <span class="q-title">Explain Requirements Management</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Requirements Management is the process of managing changes to requirements during the software development lifecycle. It ensures that changes are controlled, traceable, and consistent.</p>
+      <h3>Key Activities</h3>
+      <ul>
+        <li><strong>Change Control:</strong> Formal process to request, evaluate, approve, or reject changes.</li>
+        <li><strong>Requirements Traceability:</strong> Track each requirement from origin through design, implementation, and testing (forward and backward traceability).</li>
+        <li><strong>Version Control:</strong> Maintain versions of the SRS document.</li>
+        <li><strong>Impact Analysis:</strong> Assess how a change in one requirement affects others.</li>
+        <li><strong>Status Tracking:</strong> Monitor each requirement's status (proposed, approved, implemented, tested).</li>
+      </ul>
+      <div class="highlight-box">A <strong>Requirements Traceability Matrix (RTM)</strong> is a key tool used to map requirements to design, test cases, and code modules.</div>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q8</span>
+      <span class="q-title">What are User vs System Requirements?</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>User Requirements</th><th>System Requirements</th></tr>
+        <tr><td>Definition</td><td>High-level descriptions of what the user needs from the system</td><td>Detailed specifications of system functions, services, and constraints</td></tr>
+        <tr><td>Written for</td><td>Non-technical customers/users</td><td>Developers and technical staff</td></tr>
+        <tr><td>Language</td><td>Natural language, simple</td><td>Structured, technical notation</td></tr>
+        <tr><td>Example</td><td>"The system should allow users to search for books"</td><td>"The system shall search the catalog by ISBN, title, or author and return results within 1 second"</td></tr>
+        <tr><td>Level</td><td>Abstract/High-level</td><td>Detailed/Low-level</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q9</span>
+      <span class="q-title">Write Short Notes on Interface Requirements</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Interface requirements define how the software system interacts with other systems, hardware, or users. There are four types:</p>
+      <ul>
+        <li><strong>User Interface (UI) Requirements:</strong> Define the look, feel, and interaction of the system with end-users. E.g., "The system shall use a web-based GUI with responsive design."</li>
+        <li><strong>Hardware Interface Requirements:</strong> Describe how software interacts with physical devices. E.g., "The system must communicate with a barcode scanner via USB."</li>
+        <li><strong>Software Interface Requirements:</strong> Define interactions with other software components, APIs, or OS. E.g., "The system shall use REST APIs to communicate with the payment gateway."</li>
+        <li><strong>Communication Interface Requirements:</strong> Specify network protocols and communication standards. E.g., "All data transmission shall use HTTPS/TLS 1.3."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u2">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u2">Q10</span>
+      <span class="q-title">Problems in Requirements Engineering</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <ul>
+        <li><strong>Incomplete Requirements:</strong> Stakeholders don't mention all needs, often because they assume them as obvious.</li>
+        <li><strong>Ambiguous Requirements:</strong> Unclear language leads to different interpretations by developers and customers.</li>
+        <li><strong>Inconsistent Requirements:</strong> Conflicting needs from different stakeholders.</li>
+        <li><strong>Changing Requirements:</strong> Business needs evolve, making initial requirements outdated.</li>
+        <li><strong>Communication Gaps:</strong> Misunderstanding between technical and non-technical stakeholders.</li>
+        <li><strong>Requirement Creep (Scope Creep):</strong> Continuous addition of new requirements without proper control.</li>
+        <li><strong>Implicit Requirements:</strong> Requirements that stakeholders assume don't need to be stated.</li>
+        <li><strong>Conflicting Priorities:</strong> Different stakeholders prioritize different features.</li>
+      </ul>
+      <div class="highlight-box yellow">Studies show that <strong>over 50% of software project failures</strong> are due to poor requirements engineering.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ UNIT III ═══════════════ -->
+<section class="unit-section u3" id="u3">
+  <div class="unit-header">
+    <div class="unit-num">III</div>
+    <div class="unit-title-block">
+      <h2>Design Engineering & UML</h2>
+      <p>10 Questions Covered</p>
+    </div>
+    <div class="unit-accent-bar"></div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q1</span>
+      <span class="q-title">Explain Design Process & Design Concepts</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software design is the process of transforming requirements into a blueprint for constructing the software. It is a creative activity that defines the architecture, components, interfaces, and data of the system.</p>
+      <h3>Design Process</h3>
+      <ol>
+        <li><strong>Data/Class Design:</strong> Transform analysis model into data structures needed to implement the software.</li>
+        <li><strong>Architectural Design:</strong> Define relationships among major structural elements.</li>
+        <li><strong>Interface Design:</strong> Describe how the software communicates internally and externally.</li>
+        <li><strong>Component-Level Design:</strong> Transform structural elements into procedures/algorithms.</li>
+      </ol>
+      <h3>Fundamental Design Concepts</h3>
+      <ul>
+        <li><strong>Abstraction:</strong> Suppress detail at different levels (procedural, data abstraction).</li>
+        <li><strong>Modularity:</strong> Divide software into independently addressable components.</li>
+        <li><strong>Information Hiding:</strong> Modules should hide internal details, exposing only interfaces.</li>
+        <li><strong>Cohesion:</strong> Degree to which elements within a module belong together (high is good).</li>
+        <li><strong>Coupling:</strong> Degree of interdependence between modules (low is good).</li>
+        <li><strong>Refinement:</strong> Stepwise refinement — progressively elaborate design.</li>
+        <li><strong>Refactoring:</strong> Reorganize code to reduce complexity without changing behavior.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q2</span>
+      <span class="q-title">Explain Software Architecture & Architectural Styles</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software architecture is the high-level structure of a software system, defining how components interact to fulfill system requirements.</p>
+      <h3>Common Architectural Styles</h3>
+      <ul>
+        <li><strong>Layered (N-tier):</strong> System organized into layers (Presentation → Business Logic → Data). E.g., web applications.</li>
+        <li><strong>Client-Server:</strong> Clients request services from a centralized server. E.g., email systems.</li>
+        <li><strong>MVC (Model-View-Controller):</strong> Separates application into Model (data), View (UI), Controller (logic). E.g., Django, Rails.</li>
+        <li><strong>Microservices:</strong> Application as a collection of small, independently deployable services. E.g., Netflix, Amazon.</li>
+        <li><strong>Event-Driven:</strong> Components communicate through events/messages. E.g., IoT systems, UI frameworks.</li>
+        <li><strong>Pipe and Filter:</strong> Data flows through a sequence of processing components. E.g., UNIX shell pipelines, compilers.</li>
+        <li><strong>Repository (Blackboard):</strong> Multiple components share a central data store. E.g., databases.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q3</span>
+      <span class="q-title">Explain Cohesion and Coupling</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Cohesion</h3>
+      <p>Cohesion is the measure of how strongly related the functions within a module are. <strong>High cohesion is desirable.</strong></p>
+      <table>
+        <tr><th>Type</th><th>Description (Low → High)</th></tr>
+        <tr><td>Coincidental</td><td>Elements grouped arbitrarily (lowest)</td></tr>
+        <tr><td>Logical</td><td>Elements perform similar logical operations</td></tr>
+        <tr><td>Temporal</td><td>Elements executed at the same time</td></tr>
+        <tr><td>Procedural</td><td>Elements follow a specific sequence</td></tr>
+        <tr><td>Communicational</td><td>Elements operate on same data</td></tr>
+        <tr><td>Sequential</td><td>Output of one is input to next</td></tr>
+        <tr><td>Functional</td><td>All elements contribute to one single function (highest)</td></tr>
+      </table>
+      <h3>Coupling</h3>
+      <p>Coupling is the degree of interdependence between modules. <strong>Low coupling is desirable.</strong></p>
+      <table>
+        <tr><th>Type</th><th>Description (High → Low)</th></tr>
+        <tr><td>Content Coupling</td><td>Module directly accesses another's internal data (worst)</td></tr>
+        <tr><td>Common Coupling</td><td>Modules share global data</td></tr>
+        <tr><td>Control Coupling</td><td>One module passes control information to another</td></tr>
+        <tr><td>Stamp Coupling</td><td>Modules share composite data structures</td></tr>
+        <tr><td>Data Coupling</td><td>Modules share only necessary data via parameters (best)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q4</span>
+      <span class="q-title">Draw and Explain Class Diagram</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A Class Diagram is a structural UML diagram that shows the static structure of a system by depicting classes, their attributes, methods, and relationships.</p>
+      <div class="diagram">
+┌──────────────────┐         ┌──────────────────┐
+│      Person      │         │      Course       │
+├──────────────────┤         ├──────────────────┤
+│ - name: String   │         │ - courseId: int   │
+│ - age: int       │         │ - title: String   │
+├──────────────────┤  enrolls├ - credits: int    │
+│ + getName()      │─────────├──────────────────┤
+│ + setName()      │  1    * │ + getTitle()      │
+└──────────────────┘         └──────────────────┘
+         △
+         │ (inheritance)
+┌──────────────────┐
+│     Student      │
+├──────────────────┤
+│ - studentId: int │
+│ - grade: float   │
+├──────────────────┤
+│ + getGrade()     │
+└──────────────────┘</div>
+      <h3>Class Diagram Relationships</h3>
+      <ul>
+        <li><strong>Association:</strong> "uses a" — basic relationship between classes.</li>
+        <li><strong>Aggregation:</strong> "has a" — whole-part (part can exist independently).</li>
+        <li><strong>Composition:</strong> "contains a" — strong ownership (part cannot exist without whole).</li>
+        <li><strong>Inheritance/Generalization:</strong> "is a" — subclass inherits from superclass.</li>
+        <li><strong>Dependency:</strong> One class uses another temporarily.</li>
+        <li><strong>Realization:</strong> Class implements an interface.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q5</span>
+      <span class="q-title">Draw and Explain Sequence Diagram</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A Sequence Diagram is a behavioral UML diagram that shows how objects interact in a time-ordered sequence. It captures the <strong>dynamic behavior</strong> of a use case.</p>
+      <div class="diagram">
+  :User        :LoginPage     :AuthService    :Database
+    |               |               |               |
+    |--login()----->|               |               |
+    |               |--authenticate()|              |
+    |               |               |---queryUser()->|
+    |               |               |<--userData----|
+    |               |<--authToken---|               |
+    |<--success-----|               |               |</div>
+      <h3>Key Elements</h3>
+      <ul>
+        <li><strong>Actors/Objects:</strong> Represented as boxes at the top.</li>
+        <li><strong>Lifelines:</strong> Dashed vertical lines representing object's lifetime.</li>
+        <li><strong>Activation Bar:</strong> Thin rectangle on lifeline showing active execution.</li>
+        <li><strong>Messages:</strong> Horizontal arrows — synchronous (filled arrowhead), asynchronous (open arrowhead), return (dashed arrow).</li>
+        <li><strong>Time flows downward.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q6</span>
+      <span class="q-title">Use Case Diagram — Library & Online Shopping System</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Library Management System</h3>
+      <div class="diagram">
+         [Librarian]           [Member]
+              |                    |
+         ┌────┴───────────────────┴──────────────────┐
+         │            Library Management System        │
+         │  (Add Book)  (Remove Book)  (Search Book)  │
+         │  (Issue Book)──────────────────────────────│
+         │  (Return Book) (View Fine) (Reserve Book)  │
+         └────────────────────────────────────────────┘</div>
+      <h3>Online Shopping System</h3>
+      <div class="diagram">
+       [Customer]             [Admin]
+           |                     |
+      ┌────┴─────────────────────┴──────────────────┐
+      │            Online Shopping System            │
+      │  (Browse Products) (Add to Cart)             │
+      │  (Checkout) (Make Payment) ──── [PayGateway] │
+      │  (Track Order)  (Write Review)               │
+      │  (Manage Products) (Manage Orders) [Admin]   │
+      └──────────────────────────────────────────────┘</div>
+      <h4>Use Case Diagram Elements</h4>
+      <ul>
+        <li><strong>Actor:</strong> External entity that interacts with system (stick figure).</li>
+        <li><strong>Use Case:</strong> Function the system provides (oval).</li>
+        <li><strong>System Boundary:</strong> Rectangle containing all use cases.</li>
+        <li><strong>«include»:</strong> A use case always includes another.</li>
+        <li><strong>«extend»:</strong> A use case optionally extends another.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q7</span>
+      <span class="q-title">Explain Component Diagram</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A Component Diagram shows the physical and logical components of a system and their dependencies. It depicts how the system is split into components and how they interact.</p>
+      <div class="diagram">
+  ┌──────────────┐    ┌─────────────────┐    ┌──────────────┐
+  │  UI Component│───>│  Business Logic │───>│  Database    │
+  │  (Web/Mobile)│    │  (Application)  │    │  Component   │
+  └──────────────┘    └─────────────────┘    └──────────────┘
+                              │
+                      ┌───────┴──────────┐
+                      │  Auth Component  │
+                      └──────────────────┘</div>
+      <h3>Key Elements</h3>
+      <ul>
+        <li><strong>Component:</strong> A modular unit with well-defined interfaces (rectangle with component icon ⊞).</li>
+        <li><strong>Interface:</strong> Provided interface (lollipop symbol) and Required interface (socket symbol).</li>
+        <li><strong>Dependency:</strong> Dashed arrow showing one component depends on another.</li>
+      </ul>
+      <p>Component diagrams are used for <em>large system decomposition</em>, visualizing the distribution of functionality, and planning reuse.</p>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q8</span>
+      <span class="q-title">Explain Collaboration Diagram</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A Collaboration Diagram (also called a <strong>Communication Diagram</strong> in UML 2.x) shows how objects interact structurally — it emphasizes the <strong>organization/structure</strong> of objects, unlike sequence diagrams which emphasize time order.</p>
+      <div class="diagram">
+  ┌──────────┐  1: login()    ┌────────────┐
+  │  :User   │──────────────>│ :LoginCtrl │
+  └──────────┘               └────────────┘
+                                    │
+                    2: authenticate()│
+                                    ▼
+                             ┌────────────┐
+                             │:AuthService│
+                             └────────────┘</div>
+      <h3>Key Characteristics</h3>
+      <ul>
+        <li>Objects shown as rectangles connected by links (associations).</li>
+        <li>Messages labeled with <strong>sequence numbers</strong> (1, 2, 2.1 for nested calls).</li>
+        <li>Same information as a Sequence Diagram but different layout — focuses on structure over time.</li>
+        <li>Useful for visualizing which objects are connected and how many messages are passed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q9</span>
+      <span class="q-title">Architectural Design vs Detailed Design</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>Architectural Design (HLD)</th><th>Detailed Design (LLD)</th></tr>
+        <tr><td>Level</td><td>High-Level</td><td>Low-Level</td></tr>
+        <tr><td>Focus</td><td>System structure, major components and their interaction</td><td>Internal logic of each component/module</td></tr>
+        <tr><td>Output</td><td>Architecture document, block diagrams</td><td>Data structures, algorithms, pseudo-code</td></tr>
+        <tr><td>Done by</td><td>Senior architects</td><td>Developers/designers</td></tr>
+        <tr><td>UML Diagrams</td><td>Package, Component, Deployment diagrams</td><td>Class, Sequence, Collaboration diagrams</td></tr>
+        <tr><td>Changes</td><td>Very costly to change</td><td>Less costly to change</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u3">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u3">Q10</span>
+      <span class="q-title">Explain Conceptual Model of UML</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>UML (Unified Modeling Language) is a standardized graphical language for visualizing, specifying, constructing, and documenting software systems. It was developed by Grady Booch, James Rumbaugh, and Ivar Jacobson (the "Three Amigos") and standardized by OMG.</p>
+      <h3>UML Building Blocks</h3>
+      <h4>1. Things (Vocabulary)</h4>
+      <ul>
+        <li><strong>Structural:</strong> Class, Interface, Component, Node</li>
+        <li><strong>Behavioral:</strong> Use case, interaction, state machine</li>
+        <li><strong>Grouping:</strong> Package</li>
+        <li><strong>Annotational:</strong> Notes/Comments</li>
+      </ul>
+      <h4>2. Relationships</h4>
+      <ul>
+        <li>Dependency, Association, Aggregation, Composition, Generalization, Realization</li>
+      </ul>
+      <h4>3. Diagrams</h4>
+      <table>
+        <tr><th>Structural (Static)</th><th>Behavioral (Dynamic)</th></tr>
+        <tr><td>Class, Object, Component, Deployment, Package</td><td>Use Case, Sequence, Collaboration, State, Activity</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ UNIT IV ═══════════════ -->
+<section class="unit-section u4" id="u4">
+  <div class="unit-header">
+    <div class="unit-num">IV</div>
+    <div class="unit-title-block">
+      <h2>Testing & Metrics</h2>
+      <p>9 Questions Covered</p>
+    </div>
+    <div class="unit-accent-bar"></div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q1</span>
+      <span class="q-title">Explain Software Testing Strategies</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A testing strategy integrates test case design methods into a well-planned series of steps. Testing proceeds from unit to integration to system to acceptance.</p>
+      <div class="diagram">
+  [ Unit Testing ]  →  [ Integration Testing ]  →  [ System Testing ]  →  [ Acceptance Testing ]</div>
+      <h3>Levels of Testing</h3>
+      <ul>
+        <li><strong>Unit Testing:</strong> Tests individual modules/functions in isolation. Done by developers. Uses white-box techniques.</li>
+        <li><strong>Integration Testing:</strong> Tests combined modules to verify interfaces. Approaches: Big Bang, Top-Down, Bottom-Up, Sandwich.</li>
+        <li><strong>System Testing:</strong> Tests complete, integrated system against requirements. Black-box testing. Includes functional and non-functional testing.</li>
+        <li><strong>Acceptance Testing (UAT):</strong> Validates system meets user expectations before delivery. Done by customers.</li>
+        <li><strong>Regression Testing:</strong> Retest after changes to ensure nothing is broken.</li>
+        <li><strong>Alpha Testing:</strong> Internal testing at developer site.</li>
+        <li><strong>Beta Testing:</strong> External testing by actual users in real environment.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q2</span>
+      <span class="q-title">Explain Black-box & White-box Testing Techniques</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Black-Box Testing (Functional Testing)</h3>
+      <p>Tests software without knowledge of internal code structure. Focus: <em>what the system does</em>.</p>
+      <h4>Techniques</h4>
+      <ul>
+        <li><strong>Equivalence Partitioning:</strong> Divide input into valid and invalid classes; test one value per class.</li>
+        <li><strong>Boundary Value Analysis (BVA):</strong> Test at the edges of input ranges (min, max, min-1, max+1).</li>
+        <li><strong>Decision Table Testing:</strong> Test combinations of conditions and their actions.</li>
+        <li><strong>State Transition Testing:</strong> Test transitions between states.</li>
+        <li><strong>Use Case Testing:</strong> Test based on use case scenarios.</li>
+      </ul>
+      <h3>White-Box Testing (Structural Testing)</h3>
+      <p>Tests software with full knowledge of internal structure. Focus: <em>how the system does it</em>.</p>
+      <h4>Techniques</h4>
+      <ul>
+        <li><strong>Statement Coverage:</strong> Every statement executed at least once.</li>
+        <li><strong>Branch Coverage (Decision Coverage):</strong> Every branch (true/false) taken at least once.</li>
+        <li><strong>Path Coverage:</strong> Every possible path through code executed.</li>
+        <li><strong>Condition Coverage:</strong> Every boolean sub-expression evaluated to both true and false.</li>
+        <li><strong>Loop Testing:</strong> Test loops at zero, one, and many iterations.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q3</span>
+      <span class="q-title">Differentiate Black-box vs White-box Testing</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Parameter</th><th>Black-Box Testing</th><th>White-Box Testing</th></tr>
+        <tr><td>Also Known As</td><td>Functional / Behavioral Testing</td><td>Structural / Glass-box Testing</td></tr>
+        <tr><td>Knowledge Required</td><td>No internal code knowledge</td><td>Full code knowledge required</td></tr>
+        <tr><td>Focus</td><td>Inputs and outputs</td><td>Code structure, logic, paths</td></tr>
+        <tr><td>Done By</td><td>Testers/QA team</td><td>Developers</td></tr>
+        <tr><td>Technique</td><td>Equivalence partitioning, BVA</td><td>Branch coverage, path testing</td></tr>
+        <tr><td>Covers</td><td>Functional requirements</td><td>Code implementation</td></tr>
+        <tr><td>Suitable For</td><td>System, Acceptance Testing</td><td>Unit, Integration Testing</td></tr>
+        <tr><td>Limitation</td><td>Cannot test internal paths</td><td>Cannot test missing functionality</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q4</span>
+      <span class="q-title">Explain Unit, Integration, System Testing</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Unit Testing</h3>
+      <p>Tests the smallest testable unit of software (a function, method, or class) in isolation from the rest.</p>
+      <ul>
+        <li>Done by developers during coding phase.</li>
+        <li>Uses <strong>stubs</strong> (simulate called modules) and <strong>drivers</strong> (simulate calling modules).</li>
+        <li>Primarily white-box testing.</li>
+        <li>Tools: JUnit, NUnit, PyTest.</li>
+      </ul>
+      <h3>Integration Testing</h3>
+      <p>Tests interfaces and interaction between integrated units/modules.</p>
+      <ul>
+        <li><strong>Big Bang:</strong> All modules combined at once and tested.</li>
+        <li><strong>Top-Down:</strong> Test from top-level modules downward, using stubs.</li>
+        <li><strong>Bottom-Up:</strong> Test from lowest-level modules upward, using drivers.</li>
+        <li><strong>Sandwich:</strong> Combination of top-down and bottom-up.</li>
+      </ul>
+      <h3>System Testing</h3>
+      <p>Tests the completely integrated system to verify it meets specified requirements.</p>
+      <ul>
+        <li>Black-box testing approach.</li>
+        <li>Includes: Functional, Performance, Security, Stress, Load, Usability testing.</li>
+        <li>Done by independent testing team.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q5</span>
+      <span class="q-title">Explain Debugging Process / Art of Debugging</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Debugging is the process of finding and fixing the <strong>cause</strong> of a known bug. It begins after testing reveals a failure.</p>
+      <div class="diagram">
+  [Test Reveals Failure] → [Locate Cause] → [Fix Defect] → [Re-test] → [Pass?]</div>
+      <h3>Debugging Strategies</h3>
+      <ul>
+        <li><strong>Brute Force:</strong> Add print statements everywhere. Inefficient but commonly used.</li>
+        <li><strong>Backtracking:</strong> Start at failure point and trace backwards through code.</li>
+        <li><strong>Cause Elimination:</strong> Hypothesize a cause, design tests to confirm/deny.</li>
+        <li><strong>Program Slicing:</strong> Focus only on the code slice relevant to the failing variable.</li>
+      </ul>
+      <h3>Debugging Tools</h3>
+      <p>IDE debuggers (breakpoints, watchpoints, call stack inspection), memory leak detectors, log analyzers.</p>
+      <div class="highlight-box yellow">The <em>"Art"</em> of debugging lies in forming good hypotheses and systematically eliminating possibilities — not in randomly modifying code.</div>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q6</span>
+      <span class="q-title">Explain Validation vs Verification</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>Verification</th><th>Validation</th></tr>
+        <tr><td>Definition</td><td>Are we building the product right?</td><td>Are we building the right product?</td></tr>
+        <tr><td>Focus</td><td>Process conformance to specifications</td><td>Product meets user needs</td></tr>
+        <tr><td>Type</td><td>Static activity (reviews, inspections)</td><td>Dynamic activity (testing on software)</td></tr>
+        <tr><td>When</td><td>During development phases</td><td>At the end of development</td></tr>
+        <tr><td>Performed by</td><td>QA team, developers</td><td>Testing team with end-users</td></tr>
+        <tr><td>Example</td><td>Reviewing SRS, design, code</td><td>Running acceptance tests</td></tr>
+        <tr><td>Methods</td><td>Walk-throughs, reviews, inspections</td><td>Black-box testing, UAT</td></tr>
+      </table>
+      <div class="highlight-box green"><strong>Barry Boehm's definition:</strong> Verification = "Are we building it right?"; Validation = "Are we building the right thing?"</div>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q7</span>
+      <span class="q-title">Explain Software Metrics</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software metrics are quantitative measures of software products and processes. They provide objective data for project management and quality assessment.</p>
+      <h3>Categories of Software Metrics</h3>
+      <ul>
+        <li><strong>Size Metrics:</strong> LOC (Lines of Code), Function Points, Feature Points.</li>
+        <li><strong>Complexity Metrics:</strong> Cyclomatic Complexity, Halstead complexity measures.</li>
+        <li><strong>Quality Metrics:</strong> Defect density, Mean Time Between Failures (MTBF).</li>
+        <li><strong>Productivity Metrics:</strong> LOC/person-month, Function Points/person-month.</li>
+        <li><strong>Reliability Metrics:</strong> MTTF (Mean Time To Failure), failure rate.</li>
+      </ul>
+      <h3>GQM (Goal-Question-Metric) Paradigm</h3>
+      <p>A framework to define metrics purposefully: Define a <strong>Goal</strong> → Ask <strong>Questions</strong> to meet the goal → Identify <strong>Metrics</strong> to answer those questions.</p>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q8</span>
+      <span class="q-title">Explain Process vs Product Metrics</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>Process Metrics</th><th>Product Metrics</th></tr>
+        <tr><td>Definition</td><td>Measure the software development process itself</td><td>Measure characteristics of the software product</td></tr>
+        <tr><td>Purpose</td><td>Improve process efficiency and quality</td><td>Assess product quality and characteristics</td></tr>
+        <tr><td>Examples</td><td>Defect removal efficiency, review coverage, cost per LOC</td><td>LOC, Function Points, Cyclomatic Complexity</td></tr>
+        <tr><td>Focus</td><td>How software is built</td><td>What is built</td></tr>
+        <tr><td>Used by</td><td>Project managers</td><td>Developers and QA</td></tr>
+      </table>
+      <h3>Why Metrics Matter</h3>
+      <p>Software metrics help: estimate cost and schedule, assess process quality, identify risks early, compare alternatives, and provide basis for continual improvement.</p>
+    </div>
+  </div>
+
+  <div class="q-card u4">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u4">Q9</span>
+      <span class="q-title">Short Notes: Cyclomatic Complexity & Test Case Design</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Cyclomatic Complexity (McCabe's Metric)</h3>
+      <p>Cyclomatic Complexity (CC) measures the number of linearly independent paths through a program's source code. It quantifies code complexity.</p>
+      <p><strong>Formula:</strong> CC = E − N + 2P</p>
+      <ul>
+        <li>E = Number of edges in the control flow graph</li>
+        <li>N = Number of nodes</li>
+        <li>P = Number of connected components (usually 1)</li>
+        <li>Also: CC = Number of decision points + 1</li>
+      </ul>
+      <div class="highlight-box">
+        CC = 1–10: Simple, low risk<br>
+        CC = 11–20: Moderate complexity<br>
+        CC = 21–50: High risk, hard to test<br>
+        CC > 50: Untestable, must refactor
+      </div>
+      <h3>Test Case Design</h3>
+      <p>A test case is a set of conditions under which a tester determines if a system works correctly.</p>
+      <p><strong>Components of a Test Case:</strong> Test Case ID, Description, Preconditions, Input Data, Steps, Expected Result, Actual Result, Status (Pass/Fail).</p>
+      <p><strong>Good test case properties:</strong> Accurate, economical, traceable to requirements, repeatable, and likely to find defects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ UNIT V ═══════════════ -->
+<section class="unit-section u5" id="u5">
+  <div class="unit-header">
+    <div class="unit-num">V</div>
+    <div class="unit-title-block">
+      <h2>Risk & Quality Management</h2>
+      <p>9 Questions Covered</p>
+    </div>
+    <div class="unit-accent-bar"></div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q1</span>
+      <span class="q-title">Explain Risk Management Process</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Risk management is the process of identifying, assessing, and controlling threats to a software project's success.</p>
+      <div class="diagram">
+  [Identify] → [Analyze] → [Prioritize] → [Plan] → [Resolve] → [Monitor]</div>
+      <h3>Steps in Risk Management</h3>
+      <ol>
+        <li><strong>Risk Identification:</strong> Identify what could go wrong — technical, organizational, business, or people risks.</li>
+        <li><strong>Risk Analysis:</strong> Assess probability and impact of each risk. Risk Exposure = Probability × Impact.</li>
+        <li><strong>Risk Prioritization:</strong> Rank risks by their exposure. Focus on top risks first (top-10 risk list).</li>
+        <li><strong>Risk Planning (RMMM):</strong> Develop strategies to mitigate, monitor, and manage each risk.</li>
+        <li><strong>Risk Resolution:</strong> Execute the risk mitigation strategies.</li>
+        <li><strong>Risk Monitoring:</strong> Track risk indicators and reassess regularly throughout the project.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q2</span>
+      <span class="q-title">Explain Risk Identification, Projection, Refinement</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <h3>Risk Identification</h3>
+      <p>Identify potential risks in the project. Types:</p>
+      <ul>
+        <li><strong>Generic Risks:</strong> Common to all software projects (requirement changes, budget overrun).</li>
+        <li><strong>Product-Specific Risks:</strong> Risks specific to the technology or domain.</li>
+        <li>Risk items: Technology, people, resources, tools, schedule, customer requirements.</li>
+      </ul>
+      <h3>Risk Projection (Risk Estimation)</h3>
+      <p>Assess each risk on two dimensions:</p>
+      <ul>
+        <li><strong>Probability:</strong> Likelihood (0–1 scale) that risk will occur.</li>
+        <li><strong>Impact:</strong> Severity of consequences (catastrophic, critical, marginal, negligible).</li>
+        <li><strong>Risk Exposure (RE) = Probability × Impact cost.</strong></li>
+      </ul>
+      <h3>Risk Refinement</h3>
+      <p>Break down compound risks into sub-risks for finer analysis. Uses a condition-transition-consequence (CTC) triplet: "Given condition C, if situation S occurs, then consequence X may result."</p>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q3</span>
+      <span class="q-title">Explain RMMM (Risk Mitigation, Monitoring, Management)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>RMMM is a risk strategy plan that addresses each significant risk through three activities:</p>
+      <h3>Risk Mitigation</h3>
+      <p>Proactive steps to <strong>reduce probability or impact</strong> of a risk before it occurs.</p>
+      <ul>
+        <li>Example: High staff turnover risk → mitigate by documenting thoroughly, cross-training team members.</li>
+        <li>Strategies: Avoid, Transfer, Reduce, Accept.</li>
+      </ul>
+      <h3>Risk Monitoring</h3>
+      <p>Tracking risk indicators <strong>during the project</strong> to detect if a risk is occurring.</p>
+      <ul>
+        <li>Define trigger conditions (risk symptoms).</li>
+        <li>Regular risk reviews at project milestones.</li>
+      </ul>
+      <h3>Risk Management</h3>
+      <p>Contingency plans — actions to take <strong>when a risk actually occurs</strong>.</p>
+      <ul>
+        <li>Develop a contingency plan in advance.</li>
+        <li>Assign a risk owner responsible for monitoring and response.</li>
+      </ul>
+      <div class="highlight-box pink">The RMMM plan is typically documented as part of the <strong>Software Project Plan</strong>.</div>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q4</span>
+      <span class="q-title">Explain Software Quality Assurance (SQA)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>SQA is a planned, systematic set of activities that ensure the software development process and its products conform to established standards, processes, and procedures.</p>
+      <h3>SQA Activities</h3>
+      <ul>
+        <li><strong>Process Definition:</strong> Establish standards, procedures, guidelines.</li>
+        <li><strong>Audits:</strong> Periodic review of software process and product compliance.</li>
+        <li><strong>Technical Reviews:</strong> Walkthroughs, inspections to detect defects early.</li>
+        <li><strong>Testing:</strong> Multi-level testing strategy execution.</li>
+        <li><strong>Error Cause Analysis:</strong> Identify root causes of defects and prevent recurrence.</li>
+        <li><strong>Metrics Collection:</strong> Track quality indicators across the project.</li>
+        <li><strong>Record Keeping:</strong> Document all findings for continuous improvement.</li>
+      </ul>
+      <h3>SQA vs Testing</h3>
+      <p>SQA is <em>process-focused</em> (prevention), while testing is <em>product-focused</em> (detection). SQA ensures quality is built in; testing verifies quality is present.</p>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q5</span>
+      <span class="q-title">Explain ISO 9000 Quality Standards</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>ISO 9000 is a family of international quality management standards developed by the <strong>International Organization for Standardization (ISO)</strong>.</p>
+      <h3>Key Standards in the ISO 9000 Family</h3>
+      <ul>
+        <li><strong>ISO 9000:</strong> Vocabulary and fundamentals of quality management systems.</li>
+        <li><strong>ISO 9001:</strong> Requirements for a quality management system (most widely used). Organizations get certified to this standard.</li>
+        <li><strong>ISO 9004:</strong> Guidelines for performance improvement.</li>
+        <li><strong>ISO 9126:</strong> Software quality characteristics (functionality, reliability, usability, efficiency, maintainability, portability).</li>
+      </ul>
+      <h3>8 Principles of ISO 9001</h3>
+      <ol>
+        <li>Customer Focus</li>
+        <li>Leadership</li>
+        <li>Involvement of People</li>
+        <li>Process Approach</li>
+        <li>System Approach to Management</li>
+        <li>Continual Improvement</li>
+        <li>Factual Approach to Decision Making</li>
+        <li>Mutually Beneficial Supplier Relationships</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q6</span>
+      <span class="q-title">Explain Software Reviews (Formal Technical Reviews)</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>A Formal Technical Review (FTR) is a structured quality assurance activity performed by software engineers to detect errors in software work products.</p>
+      <h3>Objectives of FTR</h3>
+      <ul>
+        <li>Uncover errors in function, logic, and implementation early.</li>
+        <li>Verify work product meets requirements and standards.</li>
+        <li>Make development consistent and manageable.</li>
+        <li>Produce deliverables that are more easily testable.</li>
+      </ul>
+      <h3>FTR Process</h3>
+      <ol>
+        <li><strong>Planning:</strong> Producer informs project leader. Materials distributed 1–2 days before.</li>
+        <li><strong>Preparation:</strong> Reviewers study the work product and note issues.</li>
+        <li><strong>Review Meeting:</strong> ≤2 hours. Recorder notes all issues. No problem solving during meeting.</li>
+        <li><strong>Post-Review:</strong> Produce review issues list. Producer fixes defects. Reviewers verify fixes.</li>
+      </ol>
+      <h3>Types of Reviews</h3>
+      <ul>
+        <li><strong>Walk-through:</strong> Producer guides reviewers — informal, educational focus.</li>
+        <li><strong>Inspection:</strong> Formal, systematic, checklist-based — highest defect detection rate.</li>
+        <li><strong>Audit:</strong> Independent review for compliance to standards.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q7</span>
+      <span class="q-title">Explain Software Reliability</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Software reliability is the probability of failure-free software operation for a specified period of time in a specified environment.</p>
+      <h3>Key Reliability Measures</h3>
+      <ul>
+        <li><strong>MTTF (Mean Time To Failure):</strong> Average time between start and first failure.</li>
+        <li><strong>MTTR (Mean Time To Repair):</strong> Average time taken to repair a failure.</li>
+        <li><strong>MTBF (Mean Time Between Failures):</strong> MTTF + MTTR — average time between consecutive failures.</li>
+        <li><strong>Availability:</strong> MTTF / (MTTF + MTTR) × 100%</li>
+        <li><strong>Failure Rate (λ):</strong> Number of failures per unit time = 1/MTBF</li>
+      </ul>
+      <h3>Reliability Growth Models</h3>
+      <p>Software reliability improves as bugs are found and fixed. Models like <strong>Jelinski-Moranda</strong> and <strong>Goel-Okumoto</strong> predict how reliability grows with testing time.</p>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q8</span>
+      <span class="q-title">Discuss Reactive vs Proactive Risk Strategies</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>Reactive Strategy</th><th>Proactive Strategy</th></tr>
+        <tr><td>Definition</td><td>React to risks when they occur</td><td>Identify and address risks before they occur</td></tr>
+        <tr><td>Also called</td><td>"Fire fighting"</td><td>"Risk management"</td></tr>
+        <tr><td>Timing</td><td>After problem occurs</td><td>Before project begins and throughout</td></tr>
+        <tr><td>Planning</td><td>No risk plan exists</td><td>RMMM plan created in advance</td></tr>
+        <tr><td>Cost</td><td>Higher (crisis response is expensive)</td><td>Lower (prevention cheaper than cure)</td></tr>
+        <tr><td>Project Impact</td><td>High schedule/budget impact</td><td>Minimized impact through early action</td></tr>
+        <tr><td>Common in</td><td>Immature organizations (CMMI Level 1)</td><td>Mature organizations (CMMI Level 3+)</td></tr>
+      </table>
+      <div class="highlight-box green"><strong>Best Practice:</strong> Always prefer proactive risk management. A proactive approach includes risk identification, risk analysis (RMMM), and regular risk monitoring throughout the SDLC.</div>
+    </div>
+  </div>
+
+  <div class="q-card u5">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-num badge-u5">Q9</span>
+      <span class="q-title">What is Statistical Software Quality Assurance?</span>
+      <span class="q-toggle">▾</span>
+    </div>
+    <div class="q-body">
+      <p>Statistical Software Quality Assurance (SSQA) implies using statistical methods to systematically track, measure, and improve software quality by analyzing defect data.</p>
+      <h3>Steps in SSQA</h3>
+      <ol>
+        <li>Collect software error data for every project — categorize each defect by type, origin, and severity.</li>
+        <li>Trace each error to its underlying <strong>cause</strong> (e.g., inadequate testing, poor design).</li>
+        <li>Identify the "vital few" causes responsible for the most defects (Pareto Principle — 80% of defects come from 20% of causes).</li>
+        <li>Fix the most impactful causes first.</li>
+        <li>Improve the process to eliminate the root causes.</li>
+      </ol>
+      <h3>Statistical Tools Used</h3>
+      <ul>
+        <li><strong>Pareto Charts:</strong> Identify most common defect causes.</li>
+        <li><strong>Control Charts:</strong> Monitor process stability over time.</li>
+        <li><strong>Histograms:</strong> Show distribution of defect types.</li>
+        <li><strong>Cause-and-Effect (Fishbone) Diagrams:</strong> Root cause analysis.</li>
+        <li><strong>Six Sigma:</strong> Reduce defects to 3.4 per million opportunities.</li>
+      </ul>
+      <div class="highlight-box">SSQA underpins <strong>Total Quality Management (TQM)</strong> in software — moving from defect detection to defect prevention through data-driven decisions.</div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<script>
+function toggle(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+
+let allOpen = false;
+function toggleAll() {
+  allOpen = !allOpen;
+  document.querySelectorAll('.q-card').forEach(c => {
+    if (allOpen) c.classList.add('open');
+    else c.classList.remove('open');
+  });
+  document.getElementById('expandAllBtn').textContent = allOpen ? 'Collapse All ▴' : 'Expand All ▾';
+}
+
+function scrollToUnit(id, btn) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
+
+</html>
