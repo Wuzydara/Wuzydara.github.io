@@ -428,7 +428,863 @@
 </style>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS That Shouldn't Exist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
 
+/* ── BASE ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #05050a;
+  --blue: #4f8fff;
+  --cyan: #00e5ff;
+  --pink: #ff2d78;
+  --green: #00ff88;
+  --yellow: #ffe600;
+  --purple: #b44fff;
+  --orange: #ff6a00;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg);
+  color: #e0e0ff;
+  overflow-x: hidden;
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── SECTION WRAPPER ── */
+.trick {
+  min-height: 100vh;
+  padding: 80px 6vw;
+  border-bottom: 1px solid #0f0f1e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.trick-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #333360;
+  margin-bottom: 8px;
+}
+.trick-title {
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.trick-desc {
+  font-size: 14px;
+  color: #44446a;
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 60px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.trick-desc span { color: var(--cyan); }
+
+/* ══════════════════════════════════════
+   TRICK 1 — MAGNETIC TEXT WAVE
+══════════════════════════════════════ */
+.wave-text {
+  display: flex;
+  gap: 0;
+  font-size: clamp(40px, 8vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  flex-wrap: wrap;
+}
+.wave-text span {
+  display: inline-block;
+  animation: waveChar 2s ease-in-out infinite;
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+}
+.wave-text span:hover {
+  color: var(--cyan);
+  transform: translateY(-20px) scale(1.3) !important;
+  animation-play-state: paused;
+}
+/* stagger each letter with nth-child delay */
+.wave-text span:nth-child(1)  { animation-delay: 0.00s; }
+.wave-text span:nth-child(2)  { animation-delay: 0.08s; }
+.wave-text span:nth-child(3)  { animation-delay: 0.16s; }
+.wave-text span:nth-child(4)  { animation-delay: 0.24s; }
+.wave-text span:nth-child(5)  { animation-delay: 0.32s; }
+.wave-text span:nth-child(6)  { animation-delay: 0.40s; }
+.wave-text span:nth-child(7)  { animation-delay: 0.48s; }
+.wave-text span:nth-child(8)  { animation-delay: 0.56s; }
+.wave-text span:nth-child(9)  { animation-delay: 0.64s; }
+.wave-text span:nth-child(10) { animation-delay: 0.72s; }
+.wave-text span:nth-child(11) { animation-delay: 0.80s; }
+.wave-text span:nth-child(12) { animation-delay: 0.88s; }
+@keyframes waveChar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ══════════════════════════════════════
+   TRICK 2 — NEON GLOW TEXT + FLICKER
+══════════════════════════════════════ */
+.neon-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+.neon-txt {
+  font-size: clamp(36px, 7vw, 88px);
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+.neon-blue {
+  color: var(--cyan);
+  text-shadow:
+    0 0 7px var(--cyan),
+    0 0 20px var(--cyan),
+    0 0 60px var(--cyan),
+    0 0 120px #0077ff;
+  animation: flicker 5s infinite;
+}
+.neon-pink {
+  color: var(--pink);
+  text-shadow:
+    0 0 7px var(--pink),
+    0 0 20px var(--pink),
+    0 0 60px var(--pink),
+    0 0 120px #ff0055;
+  animation: flicker2 7s infinite;
+}
+.neon-green {
+  color: var(--green);
+  text-shadow:
+    0 0 7px var(--green),
+    0 0 20px var(--green),
+    0 0 60px var(--green),
+    0 0 120px #00aa55;
+}
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 7px var(--cyan), 0 0 20px var(--cyan), 0 0 60px var(--cyan), 0 0 120px #0077ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    color: #1a3355;
+  }
+}
+@keyframes flicker2 {
+  0%, 30%, 34%, 70%, 74%, 100% {
+    text-shadow: 0 0 7px var(--pink), 0 0 20px var(--pink), 0 0 60px var(--pink), 0 0 120px #ff0055;
+  }
+  32%, 72% {
+    text-shadow: none;
+    color: #331122;
+  }
+}
+
+/* ══════════════════════════════════════
+   TRICK 3 — CSS MATRIX RAIN
+══════════════════════════════════════ */
+.matrix-container {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  border: 1px solid #0a1a0a;
+  border-radius: 12px;
+  background: #010801;
+}
+.matrix-col {
+  position: absolute;
+  top: -100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--green);
+  line-height: 1.4;
+  white-space: pre;
+  animation: matrixFall linear infinite;
+  opacity: 0.8;
+  text-shadow: 0 0 8px var(--green);
+}
+/* 20 columns manually placed */
+.matrix-col:nth-child(1)  { left:2%;   animation-duration:4.1s; animation-delay:0s;    font-size:13px; }
+.matrix-col:nth-child(2)  { left:7%;   animation-duration:3.7s; animation-delay:-1.2s; }
+.matrix-col:nth-child(3)  { left:12%;  animation-duration:5.2s; animation-delay:-2.5s; font-size:12px; }
+.matrix-col:nth-child(4)  { left:17%;  animation-duration:4.5s; animation-delay:-0.8s; }
+.matrix-col:nth-child(5)  { left:22%;  animation-duration:3.9s; animation-delay:-3.1s; font-size:15px; }
+.matrix-col:nth-child(6)  { left:27%;  animation-duration:6.0s; animation-delay:-1.7s; }
+.matrix-col:nth-child(7)  { left:32%;  animation-duration:4.3s; animation-delay:-0.4s; font-size:11px; }
+.matrix-col:nth-child(8)  { left:37%;  animation-duration:3.5s; animation-delay:-2.9s; }
+.matrix-col:nth-child(9)  { left:42%;  animation-duration:5.5s; animation-delay:-1.1s; }
+.matrix-col:nth-child(10) { left:47%;  animation-duration:4.0s; animation-delay:-3.8s; font-size:13px; }
+.matrix-col:nth-child(11) { left:52%;  animation-duration:4.8s; animation-delay:-0.6s; }
+.matrix-col:nth-child(12) { left:57%;  animation-duration:3.6s; animation-delay:-2.2s; font-size:16px; }
+.matrix-col:nth-child(13) { left:62%;  animation-duration:5.1s; animation-delay:-1.5s; }
+.matrix-col:nth-child(14) { left:67%;  animation-duration:4.4s; animation-delay:-0.3s; font-size:12px; }
+.matrix-col:nth-child(15) { left:72%;  animation-duration:3.8s; animation-delay:-3.5s; }
+.matrix-col:nth-child(16) { left:77%;  animation-duration:5.7s; animation-delay:-1.9s; }
+.matrix-col:nth-child(17) { left:82%;  animation-duration:4.2s; animation-delay:-0.9s; font-size:14px; }
+.matrix-col:nth-child(18) { left:87%;  animation-duration:3.4s; animation-delay:-2.7s; }
+.matrix-col:nth-child(19) { left:92%;  animation-duration:4.9s; animation-delay:-1.3s; }
+.matrix-col:nth-child(20) { left:96%;  animation-duration:5.3s; animation-delay:-4.0s; font-size:11px; }
+@keyframes matrixFall {
+  from { top: -100%; opacity: 1; }
+  to   { top:  110%; opacity: 0.1; }
+}
+.matrix-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.matrix-msg {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(16px, 3vw, 28px);
+  color: #fff;
+  text-shadow: 0 0 20px var(--green), 0 0 40px var(--green);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  animation: matrixPulse 2s ease-in-out infinite;
+}
+@keyframes matrixPulse {
+  0%,100% { opacity: 0.7; }
+  50%      { opacity: 1; letter-spacing: 8px; }
+}
+
+/* ══════════════════════════════════════
+   TRICK 4 — MORPHING BLOB
+══════════════════════════════════════ */
+.blob-stage {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.morph-blob {
+  width: 220px;
+  height: 220px;
+  animation: morph 8s ease-in-out infinite;
+  position: relative;
+}
+.morph-blob::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: morph 8s ease-in-out infinite, rotate 12s linear infinite;
+  opacity: 0.6;
+  filter: blur(20px);
+}
+.blob-a {
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+.blob-a::before { background: linear-gradient(135deg, var(--cyan), var(--pink)); }
+.blob-b {
+  background: linear-gradient(135deg, var(--pink), var(--orange));
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+  animation-delay: -4s;
+}
+.blob-b::before { background: linear-gradient(135deg, var(--yellow), var(--pink)); animation-delay: -4s; }
+.blob-c {
+  background: linear-gradient(135deg, var(--green), var(--cyan));
+  border-radius: 70% 30% 40% 60% / 30% 60% 40% 70%;
+  animation-delay: -2s;
+}
+.blob-c::before { background: linear-gradient(135deg, var(--green), var(--blue)); animation-delay: -2s; }
+@keyframes morph {
+  0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%      { border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%; }
+  50%      { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+  75%      { border-radius: 70% 30% 50% 50% / 40% 30% 70% 60%; }
+}
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+.blob-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #334;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════
+   TRICK 5 — HOLOGRAPHIC CARD
+══════════════════════════════════════ */
+.holo-scene {
+  perspective: 1000px;
+  width: fit-content;
+}
+.holo-card {
+  width: 320px;
+  height: 200px;
+  border-radius: 16px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+/* Rainbow holographic sheen */
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,219,112,0.08) 45%,
+    rgba(255,107,189,0.1) 50%,
+    rgba(108,143,255,0.1) 55%,
+    rgba(0,229,255,0.08) 60%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: holoSheen 3s linear infinite;
+  mix-blend-mode: screen;
+}
+/* Sparkle dots */
+.holo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 80px 80px, 120px 120px, 60px 60px;
+  background-position: 0 0, 40px 40px, 20px 20px;
+  animation: sparkle 4s linear infinite;
+  opacity: 0.4;
+}
+@keyframes holoSheen {
+  0%   { background-position: 200% 0%; }
+  100% { background-position: -200% 0%; }
+}
+@keyframes sparkle {
+  0%,100% { opacity: 0.2; }
+  50%      { opacity: 0.6; }
+}
+.holo-content {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.holo-chip {
+  width: 44px; height: 32px;
+  background: linear-gradient(135deg, #c8a96e, #f5d48e, #c8a96e);
+  border-radius: 6px;
+}
+.holo-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.9);
+}
+.holo-name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ══════════════════════════════════════
+   TRICK 6 — CSS VARIABLES LIVE THEME
+══════════════════════════════════════ */
+.theme-demo {
+  --td-accent: #4f8fff;
+  border-radius: 16px;
+  border: 2px solid var(--td-accent);
+  padding: 32px;
+  background: rgba(0,0,0,0.4);
+  transition: border-color 0.4s, box-shadow 0.4s;
+  box-shadow: 0 0 40px -10px var(--td-accent);
+  max-width: 600px;
+}
+.theme-swatches {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.swatch {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.swatch:hover { transform: scale(1.2); border-color: #fff; }
+.swatch.active { border-color: #fff; transform: scale(1.15); }
+.theme-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--td-accent);
+  transition: color 0.4s;
+  margin-bottom: 8px;
+}
+.theme-bar {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--td-accent);
+  transition: background 0.4s;
+  margin-bottom: 16px;
+  animation: pulseWidth 2s ease-in-out infinite;
+}
+@keyframes pulseWidth {
+  0%,100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.theme-text { font-size: 14px; color: #556; font-family: 'JetBrains Mono', monospace; line-height: 1.7; }
+
+/* ══════════════════════════════════════
+   TRICK 7 — SCROLL PROGRESS BAR
+══════════════════════════════════════ */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--pink), var(--purple));
+  transform-origin: left;
+  z-index: 9999;
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+/* ══════════════════════════════════════
+   TRICK 8 — TYPEWRITER (CSS ONLY)
+══════════════════════════════════════ */
+.typewriter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.typewriter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(18px, 3vw, 32px);
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid transparent;
+  width: 0;
+  animation: type 1s steps(30) forwards, blink-caret 0.8s step-end infinite;
+}
+.tw1 { color: var(--cyan);   animation-delay: 0s;    width: 0; animation: type 1.2s steps(25) 0s forwards, blink-caret 0.8s 0s step-end 5; }
+.tw2 { color: var(--pink);   animation: type 1.4s steps(30) 1.5s forwards, blink-caret 0.8s 1.5s step-end 5; width:0; }
+.tw3 { color: var(--green);  animation: type 1.0s steps(20) 3.2s forwards, blink-caret 0.8s 3.2s step-end 5; width:0; }
+.tw4 { color: var(--yellow); animation: type 1.6s steps(35) 4.5s forwards, blink-caret 0.8s 4.5s step-end infinite; width:0; }
+@keyframes type {
+  from { width: 0; border-right-color: currentColor; }
+  to   { width: 100%; border-right-color: transparent; }
+}
+@keyframes blink-caret {
+  0%,100% { border-right-color: transparent; }
+  50%      { border-right-color: currentColor; }
+}
+
+/* ══════════════════════════════════════
+   TRICK 9 — PURE CSS STARFIELD
+══════════════════════════════════════ */
+.starfield {
+  position: relative;
+  height: 360px;
+  background: radial-gradient(ellipse at center, #0d0d2b 0%, #020208 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  animation: starDrift linear infinite;
+}
+.stars-layer:nth-child(1) {
+  background-image: radial-gradient(1px 1px at 10% 20%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 30% 60%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 50% 10%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 70% 80%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 90% 40%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 15% 90%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 45% 45%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 80% 15%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 60% 70%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 25% 35%, #aad4ff 100%, transparent),
+    radial-gradient(1px 1px at 55% 85%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 35% 5%,  #fff 100%, transparent),
+    radial-gradient(1px 1px at 75% 50%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 5%  55%, #ffd166 100%, transparent),
+    radial-gradient(1px 1px at 95% 90%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 20% 75%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 65% 25%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 40% 95%, #ff9fff 100%, transparent),
+    radial-gradient(1px 1px at 85% 65%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 3%  30%, #fff 100%, transparent);
+  animation-duration: 80s;
+  opacity: 0.7;
+}
+.stars-layer:nth-child(2) {
+  background-image: radial-gradient(1px 1px at 8%  45%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 22% 15%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 38% 70%, #aad4ff 100%, transparent),
+    radial-gradient(1px 1px at 52% 30%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 66% 88%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 78% 5%,  #fff 100%, transparent),
+    radial-gradient(2px 2px at 92% 60%, #ff9fff 100%, transparent),
+    radial-gradient(1px 1px at 14% 50%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 44% 18%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 58% 92%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 72% 38%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 88% 75%, #ffd166 100%, transparent);
+  animation-duration: 50s;
+  opacity: 0.5;
+}
+.stars-layer:nth-child(3) {
+  background-image: radial-gradient(3px 3px at 20% 30%, #fff 100%, transparent),
+    radial-gradient(3px 3px at 60% 70%, #aad4ff 100%, transparent),
+    radial-gradient(3px 3px at 80% 20%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 40% 80%, #ffd166 100%, transparent),
+    radial-gradient(3px 3px at 10% 60%, #ff9fff 100%, transparent);
+  animation-duration: 120s;
+  opacity: 0.9;
+}
+@keyframes starDrift {
+  from { transform: translateX(0) translateY(0); }
+  to   { transform: translateX(-100px) translateY(-80px); }
+}
+.star-title {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+/* Shooting star */
+.shooting-star {
+  position: absolute;
+  top: 15%; left: -10%;
+  width: 200px; height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  animation: shoot 6s ease-in infinite;
+  opacity: 0;
+}
+.shooting-star:nth-child(5) { top: 40%; animation-delay: -3s; }
+.shooting-star:nth-child(6) { top: 65%; animation-delay: -1s; width: 150px; }
+@keyframes shoot {
+  0%   { left: -10%; opacity: 0; }
+  10%  { opacity: 1; }
+  60%  { left: 110%; opacity: 0; }
+  100% { left: 110%; opacity: 0; }
+}
+
+/* ══════════════════════════════════════
+   TRICK 10 — TEXT STROKE & OUTLINE
+══════════════════════════════════════ */
+.outline-text-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.outline-txt {
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.stroke-only {
+  -webkit-text-stroke: 2px var(--blue);
+  color: transparent;
+}
+.stroke-fill {
+  -webkit-text-stroke: 2px var(--pink);
+  color: transparent;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stroke-ani {
+  -webkit-text-stroke: 2px var(--green);
+  color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.stroke-ani::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 0%;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: fillReveal 3s ease-in-out infinite alternate;
+}
+@keyframes fillReveal {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  backdrop-filter: blur(24px);
+  background: rgba(5,5,10,0.8);
+  border-bottom: 1px solid #0f0f20;
+  z-index: 999;
+}
+.nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--cyan); letter-spacing: 3px; }
+.nav-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #223; letter-spacing: 2px; }
+
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="progress-bar" id="prog"></div>
+
+<!-- Nav -->
+<nav class="top-nav">
+  <span class="nav-logo">CSS.TRICKS</span>
+  <span class="nav-count mono">10 effects · 0 libraries</span>
+</nav>
+
+<!-- ══ TRICK 1: WAVE TEXT ══ -->
+<section class="trick" style="padding-top:120px">
+  <p class="trick-label">Trick 01</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Wave Text</h2>
+  <p class="trick-desc">Each letter has <span>animation-delay</span> staggered by 0.08s. Hover a letter to snap it up. Pure CSS — just nth-child delays.</p>
+  <div class="wave-text">
+    <span>C</span><span>S</span><span>S</span><span>&nbsp;</span>
+    <span>I</span><span>S</span><span>&nbsp;</span>
+    <span>W</span><span>I</span><span>L</span><span>D</span><span>.</span>
+  </div>
+</section>
+
+<!-- ══ TRICK 2: NEON FLICKER ══ -->
+<section class="trick" style="background:#020208">
+  <p class="trick-label">Trick 02</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Neon Flicker</h2>
+  <p class="trick-desc"><span>text-shadow</span> stacked 4 layers deep creates the glow. The flicker is a keyframe that suddenly drops the shadow and darkens the color — like a real tube light.</p>
+  <div class="neon-wrap">
+    <div class="neon-txt neon-blue">OPEN 24HRS</div>
+    <div class="neon-txt neon-pink">NO VACANCY</div>
+    <div class="neon-txt neon-green">DARA.DEV</div>
+  </div>
+</section>
+
+<!-- ══ TRICK 3: MATRIX RAIN ══ -->
+<section class="trick">
+  <p class="trick-label">Trick 03</p>
+  <h2 class="trick-title" style="color:var(--green);margin-bottom:48px">Matrix Rain</h2>
+  <p class="trick-desc">20 absolutely positioned columns of text, each with a different <span>animation-duration</span> and <span>animation-delay</span>. They loop from top: -100% to top: 110%.</p>
+  <div class="matrix-container">
+    <div class="matrix-col">ア イ ウ エ オ カ キ ク ケ コ サ シ ス セ ソ タ チ ツ テ ト ナ ニ ヌ ネ ノ 1 0 1 1 0 0 1</div>
+    <div class="matrix-col">0 1 カ キ 1 0 ア ク ケ 1 コ 0 サ シ ス 1 0 セ ソ タ チ ツ 1 テ ト 0 1 ナ ニ 0</div>
+    <div class="matrix-col">ス セ ソ 1 0 タ チ 0 1 ツ テ ト 0 ナ ニ ヌ 1 ネ 0 ノ ア 1 イ ウ エ 0 1 オ カ キ</div>
+    <div class="matrix-col">1 0 ア 1 イ ウ 0 エ 1 オ カ 0 キ ク 1 ケ 0 コ サ 1 シ ス 0 セ 1 ソ 0 タ チ 1</div>
+    <div class="matrix-col">ネ ノ 0 1 ア イ 0 ウ エ 1 オ 0 カ キ ク 1 ケ コ 0 サ シ 1 ス セ ソ 0 タ チ 1 ツ</div>
+    <div class="matrix-col">1 0 1 ア イ ウ エ オ 0 カ 1 キ ク ケ コ 0 サ シ 1 ス セ 0 ソ タ チ 1 ツ テ ト ナ</div>
+    <div class="matrix-col">キ ク ケ コ 1 0 サ シ ス 1 セ ソ 0 タ チ ツ 1 テ ト ナ 0 ニ ヌ ネ ノ 1 ア 0 イ ウ</div>
+    <div class="matrix-col">0 1 テ ト 0 ナ ニ 1 ヌ ネ ノ 0 ア 1 イ ウ エ 0 オ 1 カ キ ク ケ 0 コ サ 1 シ ス</div>
+    <div class="matrix-col">ア 1 0 イ ウ エ オ カ キ ク 0 ケ コ 1 サ シ ス セ 0 ソ 1 タ チ ツ テ ト 0 ナ ニ ヌ</div>
+    <div class="matrix-col">1 ネ ノ 0 ア 1 イ ウ 0 エ オ カ 1 キ ク ケ 0 コ サ 1 シ ス セ 0 ソ タ 1 チ ツ テ</div>
+    <div class="matrix-col">セ ソ タ 0 1 チ ツ テ ト 0 ナ ニ 1 ヌ ネ ノ 0 ア イ ウ 1 エ オ 0 カ キ ク 1 ケ コ</div>
+    <div class="matrix-col">0 ア 1 イ ウ エ 0 オ カ キ ク 1 ケ コ サ 0 シ ス セ ソ 1 タ チ ツ 0 テ ト ナ 1 ニ</div>
+    <div class="matrix-col">ニ ヌ ネ 0 ノ ア 1 イ ウ エ オ 0 カ キ 1 ク ケ コ サ 0 シ ス セ 1 ソ タ チ ツ 0 テ</div>
+    <div class="matrix-col">1 0 サ シ ス 1 セ ソ 0 タ チ 1 ツ テ ト 0 ナ ニ ヌ 1 ネ ノ ア イ 0 ウ エ オ 1 カ</div>
+    <div class="matrix-col">ウ エ オ 0 カ 1 キ ク ケ コ サ 0 シ ス 1 セ ソ タ 0 チ ツ テ ト 1 ナ ニ ヌ 0 ネ ノ</div>
+    <div class="matrix-col">0 1 ト ナ ニ 0 ヌ ネ ノ 1 ア イ ウ 0 エ オ カ 1 キ ク 0 ケ コ サ シ 1 ス セ ソ タ</div>
+    <div class="matrix-col">タ チ 0 ツ テ ト 1 ナ ニ ヌ 0 ネ ノ ア 1 イ ウ エ オ 0 カ キ ク 1 ケ コ サ シ 0 ス</div>
+    <div class="matrix-col">1 イ ウ エ 0 オ カ キ ク 1 ケ コ サ シ 0 ス セ ソ タ 1 チ ツ テ ト ナ 0 ニ ヌ ネ 1</div>
+    <div class="matrix-col">コ サ シ 1 ス セ ソ 0 タ チ ツ テ 1 ト ナ ニ 0 ヌ ネ ノ ア 1 イ ウ エ 0 オ カ キ ク</div>
+    <div class="matrix-col">0 テ ト 1 ナ ニ ヌ ネ 0 ノ ア イ 1 ウ エ オ カ 0 キ ク ケ コ 1 サ シ ス セ 0 ソ タ</div>
+    <div class="matrix-overlay">
+      <div class="matrix-msg">Wake up, Dara.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRICK 4: MORPHING BLOBS ══ -->
+<section class="trick" style="background:#020205">
+  <p class="trick-label">Trick 04</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Morphing Blobs</h2>
+  <p class="trick-desc">The <span>border-radius</span> property accepts 8 values (4 horizontal / 4 vertical). Animating between them creates the organic morph. The glow behind is a <span>filter: blur()</span> ::before pseudo-element.</p>
+  <div class="blob-stage">
+    <div>
+      <div class="morph-blob blob-a"></div>
+      <div class="blob-label">Blue / Purple</div>
+    </div>
+    <div>
+      <div class="morph-blob blob-b"></div>
+      <div class="blob-label">Pink / Orange</div>
+    </div>
+    <div>
+      <div class="morph-blob blob-c"></div>
+      <div class="blob-label">Green / Cyan</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRICK 5: HOLOGRAPHIC CARD ══ -->
+<section class="trick">
+  <p class="trick-label">Trick 05</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Holographic Card</h2>
+  <p class="trick-desc">A <span>conic-gradient</span> overlay animates across the card. The sparkles are <span>radial-gradient</span> dots at different background-positions. Move your mouse over it.</p>
+  <div class="holo-scene" id="holoScene">
+    <div class="holo-card" id="holoCard">
+      <div class="holo-content">
+        <div class="holo-chip"></div>
+        <div>
+          <div class="holo-num">4729  8831  0042  1337</div>
+          <div class="holo-name" style="margin-top:8px">Dara · Developer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRICK 6: LIVE CSS VARIABLES THEME ══ -->
+<section class="trick" style="background:#020208">
+  <p class="trick-label">Trick 06</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Live CSS Variables</h2>
+  <p class="trick-desc">Clicking a swatch sets <span>--td-accent</span> on the card element via JavaScript. Every property referencing <span>var(--td-accent)</span> updates instantly — border, glow, text, bar.</p>
+  <div class="theme-demo" id="themeDemo">
+    <div class="theme-swatches">
+      <div class="swatch active" style="background:#4f8fff" onclick="setTheme('#4f8fff',this)"></div>
+      <div class="swatch" style="background:#ff2d78" onclick="setTheme('#ff2d78',this)"></div>
+      <div class="swatch" style="background:#00ff88" onclick="setTheme('#00ff88',this)"></div>
+      <div class="swatch" style="background:#ffe600" onclick="setTheme('#ffe600',this)"></div>
+      <div class="swatch" style="background:#b44fff" onclick="setTheme('#b44fff',this)"></div>
+      <div class="swatch" style="background:#00e5ff" onclick="setTheme('#00e5ff',this)"></div>
+    </div>
+    <div class="theme-title">Accent Color</div>
+    <div class="theme-bar"></div>
+    <div class="theme-text">
+      The entire card — border, glow, title text, and this bar — all read from one CSS variable.<br>
+      Change it once → everything updates. This is why CSS variables are powerful for theming.
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRICK 7: TYPEWRITER ══ -->
+<section class="trick">
+  <p class="trick-label">Trick 07</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">CSS Typewriter</h2>
+  <p class="trick-desc"><span>width: 0</span> animated with <span>steps()</span> — not ease, not linear, but steps — which makes it snap character by character. The blinking cursor is a border-right that blinks.</p>
+  <div class="typewriter-list">
+    <div class="typewriter tw1">I write code.</div>
+    <div class="typewriter tw2">I break things beautifully.</div>
+    <div class="typewriter tw3">I study OS at 2am.</div>
+    <div class="typewriter tw4">I make CSS do the impossible._</div>
+  </div>
+</section>
+
+<!-- ══ TRICK 8: TEXT STROKE ══ -->
+<section class="trick" style="background:#020208">
+  <p class="trick-label">Trick 08</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">Text Stroke</h2>
+  <p class="trick-desc"><span>-webkit-text-stroke</span> draws an outline on the text. Combined with <span>color: transparent</span> you get hollow text. The bottom one uses a ::before with animating width to "fill" it.</p>
+  <div class="outline-text-row">
+    <div class="outline-txt stroke-only">HOLLOW</div>
+    <div class="outline-txt stroke-fill">GRADIENT</div>
+    <div class="outline-txt stroke-ani" data-text="FILLING...">FILLING...</div>
+  </div>
+</section>
+
+<!-- ══ TRICK 9: STARFIELD ══ -->
+<section class="trick">
+  <p class="trick-label">Trick 09</p>
+  <h2 class="trick-title" style="color:#fff;margin-bottom:48px">CSS Starfield</h2>
+  <p class="trick-desc">Three layers of <span>radial-gradient</span> dots at 1–3px, each drifting at a different speed — creating parallax depth. Shooting stars are long thin divs with opacity animation.</p>
+  <div class="starfield">
+    <div class="stars-layer"></div>
+    <div class="stars-layer"></div>
+    <div class="stars-layer"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="star-title">somewhere in the universe · pure css</div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<section class="trick" style="text-align:center;align-items:center;min-height:50vh">
+  <p class="trick-label">That's 9 tricks</p>
+  <h2 class="trick-title" style="background:linear-gradient(90deg,var(--cyan),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
+    Still going.
+  </h2>
+  <p class="trick-desc" style="text-align:center;margin:20px auto 0">
+    CSS can also do: parallax, custom checkboxes, accordion menus,<br>
+    animated SVG paths, custom scrollbars, container queries, has() selector magic...<br>
+    <span>the rabbit hole goes very deep.</span>
+  </p>
+</section>
+
+<script>
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  document.getElementById('prog').style.transform = `scaleX(${pct})`;
+  document.getElementById('prog').style.transformOrigin = 'left';
+});
+
+// Holographic card tilt
+const scene = document.getElementById('holoScene');
+const card  = document.getElementById('holoCard');
+scene.addEventListener('mousemove', e => {
+  const r  = card.getBoundingClientRect();
+  const cx = r.left + r.width  / 2;
+  const cy = r.top  + r.height / 2;
+  const rx = (e.clientY - cy) / 10;
+  const ry = (cx - e.clientX) / 10;
+  card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.04)`;
+});
+scene.addEventListener('mouseleave', () => {
+  card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+  card.style.transition = 'transform 0.6s ease';
+});
+
+// CSS Variable theme switcher
+function setTheme(color, el) {
+  document.getElementById('themeDemo').style.setProperty('--td-accent', color);
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+
+</body>
+</html>
 <div class="hero">
   <div class="hero-tag">📚 Exam Preparation Guide</div>
   <h1>Software <span>Engineering</span></h1>
