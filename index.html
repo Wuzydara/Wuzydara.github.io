@@ -6,6 +6,1205 @@
     <title>Dara (Developer)</title>
     <style>
         * { margin: 0; padding:0; box-sizing: border-box;}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Economics & Accounting — Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --paper: #faf6ee;
+    --cream: #f3ead8;
+    --gold: #c8922a;
+    --rust: #b84c1e;
+    --teal: #1e6b6e;
+    --sage: #4a7c59;
+    --muted: #6b5e4a;
+    --border: #d4c4a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,146,42,0.06) 40px, rgba(200,146,42,0.06) 41px);
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  header .subtitle {
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    position: relative;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--cream);
+    border-bottom: 2px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border: 1.5px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  /* UNIT SECTION */
+  .unit {
+    margin-bottom: 4rem;
+  }
+  .unit-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .unit-badge {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .unit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,18,9,0.06);
+  }
+  .q-header {
+    background: var(--cream);
+    padding: 0.8rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-number {
+    background: var(--gold);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  .q-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex: 1;
+    color: var(--ink);
+  }
+  .q-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .q-card.open .q-toggle { transform: rotate(180deg); }
+  .q-body {
+    padding: 1.25rem 1.5rem;
+    display: none;
+    border-top: 1.5px solid var(--border);
+    animation: slideIn 0.2s ease;
+  }
+  .q-card.open .q-body { display: block; }
+  @keyframes slideIn { from { opacity:0; transform: translateY(-4px); } to { opacity:1; transform: translateY(0); } }
+
+  /* CONTENT STYLES */
+  .q-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--teal);
+    margin: 1.2rem 0 0.4rem;
+    font-weight: 700;
+  }
+  .q-body h3:first-child { margin-top: 0; }
+  .q-body p { margin-bottom: 0.8rem; color: #2a2018; }
+  .q-body ul, .q-body ol { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+  .q-body li { margin-bottom: 0.3rem; }
+  .q-body strong { color: var(--rust); font-weight: 600; }
+  .q-body em { color: var(--teal); font-style: italic; }
+
+  /* TABLE */
+  .q-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 0.8rem 0;
+  }
+  .q-body th {
+    background: var(--ink);
+    color: var(--gold);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .q-body td {
+    padding: 0.45rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-body tr:nth-child(even) td { background: var(--cream); }
+
+  /* FORMULA BOX */
+  .formula {
+    background: #1a1209;
+    color: #f3ead8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+    margin: 0.6rem 0;
+    border-left: 3px solid var(--gold);
+  }
+/* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, #fef9ee, #fdf2d8);
+    border-left: 3px solid var(--gold);
+    padding: 0.75rem 1rem;
+    border-radius: 0 3px 3px 0;
+    margin: 0.6rem 0;
+    font-size: 0.92rem;
+  }
+
+  .note {
+    background: #eef7f7;
+    border-left: 3px solid var(--teal);
+    padding: 0.65rem 1rem;
+    border-radius: 0 3px 3px 0;
+    margin: 0.6rem 0;
+    font-size: 0.88rem;
+    color: #1a4444;
+  }
+
+  /* SECTION DIVIDERS */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  /* EXPAND ALL */
+  .controls {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 0.4rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: var(--gold); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-outline:hover { background: var(--cream); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="subtitle">Complete Study Guide</div>
+  <h1>Business Economics &amp; Accounting</h1>
+  <div class="subtitle" style="margin-top:0.8rem; color: #c8922a88;">Units I – V &nbsp;·&nbsp; Short &amp; Long Answers</div>
+</header>
+
+<nav>
+  <a href="#unit1">Unit I — Foundations</a>
+  <a href="#unit2">Unit II — Demand &amp; Supply</a>
+  <a href="#unit3">Unit III — Production &amp; Cost</a>
+  <a href="#unit4">Unit IV — Accounting</a>
+  <a href="#unit5">Unit V — Ratio Analysis</a>
+</nav>
+
+<main>
+
+<!-- =========== UNIT I =========== -->
+<section class="unit" id="unit1">
+  <div class="unit-header">
+    <span class="unit-badge">UNIT I</span>
+    <span class="unit-title">Business, Economics &amp; National Income</span>
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="expandUnit('unit1')">Expand All</button>
+    <button class="btn btn-outline" onclick="collapseUnit('unit1')">Collapse All</button>
+  </div>
+
+  <div class="section-label">Short Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S1</span>
+      <span class="q-text">List out non-conventional sources of finance</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>Non-conventional (alternative) sources of finance are funding avenues beyond traditional banks and share markets:</p>
+      <ul>
+        <li><strong>Venture Capital</strong> – Investment by firms in high-growth startups in exchange for equity</li>
+        <li><strong>Angel Investors</strong> – Wealthy individuals who fund early-stage businesses</li>
+        <li><strong>Crowdfunding</strong> – Raising small amounts from a large number of people online</li>
+        <li><strong>Microfinance</strong> – Small loans to entrepreneurs who lack access to banks</li>
+        <li><strong>Factoring</strong> – Selling receivables to a third party at a discount for immediate cash</li>
+        <li><strong>Leasing &amp; Hire Purchase</strong> – Using assets without full ownership purchase</li>
+        <li><strong>Trade Credit</strong> – Buying goods on credit from suppliers</li>
+        <li><strong>Retained Earnings</strong> – Profits reinvested back into the business</li>
+        <li><strong>Public Deposits</strong> – Accepting fixed deposits directly from the public</li>
+        <li><strong>Peer-to-Peer Lending (P2P)</strong> – Online platforms connecting borrowers and lenders</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S2</span>
+      <span class="q-text">Define Micro and Macro Economics</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Aspect</th><th>Microeconomics</th><th>Macroeconomics</th></tr>
+        <tr><td><strong>Definition</strong></td><td>Study of individual units — a firm, consumer, or industry</td><td>Study of the economy as a whole</td></tr>
+        <tr><td><strong>Focus</strong></td><td>Price determination, consumer behavior, firm decisions</td><td>GDP, inflation, unemployment, monetary policy</td></tr>
+        <tr><td><strong>Coined by</strong></td><td>Alfred Marshall</td><td>Ragnar Frisch</td></tr>
+        <tr><td><strong>Example</strong></td><td>Why does Apple price iPhones at ₹80,000?</td><td>Why is India's inflation 5%?</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S3</span>
+      <span class="q-text">List out different business entities</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <ul>
+        <li><strong>Sole Proprietorship</strong> – Owned and run by a single individual</li>
+        <li><strong>Partnership Firm</strong> – Two or more persons sharing profits/losses</li>
+        <li><strong>Joint Stock Company</strong> (Public/Private Ltd.) – Separate legal entity with shareholders</li>
+        <li><strong>Limited Liability Partnership (LLP)</strong> – Combines partnership flexibility with limited liability</li>
+        <li><strong>Co-operative Society</strong> – Voluntary association for mutual benefit</li>
+        <li><strong>Public Sector Enterprise</strong> – Owned by government (e.g., ONGC, BHEL)</li>
+        <li><strong>Joint Venture</strong> – Two or more firms collaborate for a specific project</li>
+        <li><strong>Franchise</strong> – Business operating under a franchisor's brand and model</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S4</span>
+      <span class="q-text">Explain the role of money supply in inflation</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The relationship between money supply and inflation is captured by the <strong>Quantity Theory of Money</strong>:</p>
+      <div class="formula">MV = PT &nbsp;&nbsp; (Fisher's Equation)
+M = Money Supply | V = Velocity | P = Price Level | T = Transactions</div>
+      <p>When <strong>money supply increases</strong> faster than the growth of goods and services, too much money chases too few goods — causing <em>demand-pull inflation</em>.</p>
+      <div class="highlight">
+        <strong>Example:</strong> If RBI prints more currency to finance deficits but production stays constant, prices rise — this is classic monetary inflation.
+      </div>
+      <ul>
+        <li>RBI controls money supply through CRR, SLR, Repo Rate, and Open Market Operations</li>
+        <li>Excess liquidity → spending rises → prices rise → inflation</li>
+        <li>Low money supply → credit crunch → deflation / recession risk</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S5</span>
+      <span class="q-text">What is National Income?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>National Income</strong> is the total monetary value of all goods and services produced by the residents of a country in a given year, including income earned abroad minus income earned by foreigners domestically.</p>
+      <div class="formula">NI = GNP – Depreciation (Capital Consumption Allowance)</div>
+      <h3>Key Concepts</h3>
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>GDP</td><td>Value of all goods/services produced <em>within</em> the country</td></tr>
+        <tr><td>GNP</td><td>GDP + Net Factor Income from Abroad</td></tr>
+        <tr><td>NNP (at MP)</td><td>GNP – Depreciation</td></tr>
+        <tr><td>NNP (at FC)</td><td>NNP (at MP) – Net Indirect Taxes = National Income</td></tr>
+        <tr><td>Per Capita Income</td><td>National Income ÷ Population</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S6</span>
+      <span class="q-text">What is Business and its characteristics?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Business</strong> refers to any lawful economic activity involving the production, purchase, or sale of goods and services carried out regularly with the objective of earning profit.</p>
+      <h3>Characteristics</h3>
+      <ul>
+        <li><strong>Economic Activity</strong> – Involves production or exchange for money</li>
+        <li><strong>Regularity</strong> – Must be done on a continuing basis (not a one-time transaction)</li>
+        <li><strong>Profit Motive</strong> – Primary aim is to earn returns on investment</li>
+        <li><strong>Risk &amp; Uncertainty</strong> – All businesses face uncertainty of returns</li>
+        <li><strong>Satisfaction of Human Wants</strong> – Produces goods/services to fulfill needs</li>
+        <li><strong>Legal &amp; Ethical</strong> – Must operate within legal framework</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S7</span>
+      <span class="q-text">What is a Partnership Deed? Main contents?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Partnership Deed</strong> is a written agreement between partners that governs the terms and conditions of the partnership firm. It avoids future disputes.</p>
+      <h3>Main Contents</h3>
+      <ul>
+        <li>Name and address of the firm and all partners</li>
+        <li>Nature of the business</li>
+        <li>Capital contribution by each partner</li>
+        <li>Profit and loss sharing ratio</li>
+        <li>Rate of interest on capital and drawings</li>
+        <li>Salary or commission to working partners</li>
+        <li>Rules regarding admission, retirement, or death of a partner</li>
+        <li>Procedure for dissolution of the firm</li>
+        <li>Settlement of disputes (arbitration clause)</li>
+        <li>Duration of the partnership</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S8</span>
+      <span class="q-text">What is Inflation?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Inflation</strong> is a sustained rise in the general price level of goods and services in an economy over a period of time, resulting in a fall in the purchasing power of money.</p>
+      <h3>Types</h3>
+      <ul>
+        <li><strong>Demand-Pull Inflation</strong> – Excess demand over supply pulls prices up</li>
+        <li><strong>Cost-Push Inflation</strong> – Rise in production costs (wages, raw materials) pushed to consumers</li>
+        <li><strong>Built-in Inflation</strong> – Wage-price spiral; workers demand higher wages anticipating future price rises</li>
+        <li><strong>Hyperinflation</strong> – Extremely rapid inflation (e.g., Zimbabwe 2008)</li>
+        <li><strong>Stagflation</strong> – High inflation + high unemployment simultaneously</li>
+      </ul>
+      <div class="formula">Inflation Rate = [(CPI current – CPI previous) / CPI previous] × 100</div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S9/S10</span>
+      <span class="q-text">What is Business Economics &amp; Define Business</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Business Economics</strong> (Managerial Economics) is the application of economic theories, tools, and methods to business decision-making. It bridges the gap between abstract economic theory and real business practice.</p>
+      <div class="highlight">
+        It helps managers answer: How much to produce? What price to charge? Should we expand? Which market to enter?
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S11</span>
+      <span class="q-text">What is Theory of the Firm?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The <strong>Theory of the Firm</strong> explains why firms exist, how they organize production, and how they make decisions to achieve their goals. It answers: <em>What is the optimal output? How are resources allocated inside a firm?</em></p>
+      <h3>Key Approaches</h3>
+      <ul>
+        <li><strong>Profit Maximization Theory</strong> (Traditional) – Firm produces where MR = MC</li>
+        <li><strong>Sales Revenue Maximization</strong> (Baumol) – Maximize sales subject to profit constraint</li>
+        <li><strong>Managerial Utility</strong> (Williamson) – Managers maximize their own utility (salary, perks)</li>
+        <li><strong>Behavioral Theory</strong> (Cyert &amp; March) – Firm as a coalition of stakeholders, satisfices rather than maximizes</li>
+        <li><strong>Transaction Cost Theory</strong> (Coase/Williamson) – Firms exist to reduce transaction costs of market exchange</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Long Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L1</span>
+      <span class="q-text">Define Joint Stock Company — Features, Advantages &amp; Disadvantages</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Joint Stock Company</strong> is a voluntary association of persons who contribute capital through shares for carrying out a business, having a distinct legal identity separate from its members.</p>
+      <h3>Essential Features</h3>
+      <ul>
+        <li><strong>Separate Legal Entity</strong> – Company can own property, sue and be sued in its own name</li>
+        <li><strong>Limited Liability</strong> – Shareholders lose only the amount invested; personal assets safe</li>
+        <li><strong>Perpetual Succession</strong> – Company continues regardless of death/exit of shareholders</li>
+        <li><strong>Transferability of Shares</strong> – Shares of public companies freely transferable on stock exchange</li>
+        <li><strong>Common Seal</strong> – Legal signature of the company on official documents</li>
+        <li><strong>Large Capital</strong> – Can raise funds from thousands of investors</li>
+        <li><strong>Professional Management</strong> – Separation of ownership and management</li>
+      </ul>
+      <table>
+        <tr><th>Advantages</th><th>Disadvantages</th></tr>
+        <tr><td>Limited liability of members</td><td>Complex formation process</td></tr>
+        <tr><td>Large-scale capital mobilization</td><td>High legal and regulatory compliance costs</td></tr>
+        <tr><td>Perpetual existence</td><td>Separation of ownership &amp; control (agency problem)</td></tr>
+        <tr><td>Democratic management (Board)</td><td>Lack of secrecy (public disclosure required)</td></tr>
+        <tr><td>Transferable shares = liquidity</td><td>Delay in decision-making (bureaucracy)</td></tr>
+        <tr><td>Access to debt and equity markets</td><td>Double taxation (corporate tax + dividend tax)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L5</span>
+      <span class="q-text">Features and Phases of Business Cycle</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Business Cycle</strong> refers to the recurring fluctuations in economic activity, alternating between periods of expansion and contraction around a long-term growth trend.</p>
+      <h3>Four Phases</h3>
+      <ol>
+        <li><strong>Expansion (Boom/Recovery)</strong> – GDP rises, employment increases, investment and consumer spending grow, prices rise moderately. <em>Example: India 2003–2007, GDP growing at 8–9%.</em></li>
+        <li><strong>Peak</strong> – Maximum economic activity. Output, employment at highest levels. Inflation risk is highest. The economy cannot sustain this pace.</li>
+        <li><strong>Contraction (Recession/Slowdown)</strong> – GDP growth slows or falls for two consecutive quarters. Unemployment rises, investment falls, consumer confidence drops. <em>Example: Global recession 2008–09.</em></li>
+        <li><strong>Trough (Depression)</strong> – Lowest point of economic activity. Unemployment highest, output and prices lowest. Recovery begins from here.</li>
+      </ol>
+      <h3>Key Features of Business Cycles</h3>
+      <ul>
+        <li>They are <strong>recurring</strong> but not perfectly regular</li>
+        <li>They are <strong>economy-wide</strong>, affecting multiple sectors simultaneously</li>
+        <li>Investment and durable goods are more cyclical than necessities</li>
+        <li>Duration varies — short cycles (Kitchin, ~40 months), medium (Juglar, ~9 years), long (Kondratieff, ~50 years)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L8/L11</span>
+      <span class="q-text">National Income — Importance, Concepts &amp; Calculation Methods</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>Three Methods of Calculating National Income</h3>
+      <ol>
+        <li>
+          <strong>Product/Output Method</strong> – Sum the market value of all final goods and services produced in a year.
+          <div class="formula">NI = ΣValue of Final Output (avoid double counting using Value Added)</div>
+          Used in: Agriculture, Industry, Services sectors
+        </li>
+        <li>
+          <strong>Income Method</strong> – Sum all factor incomes (wages, rent, interest, profit) earned in production.
+          <div class="formula">NI = Wages + Rent + Interest + Profit + Mixed Income</div>
+        </li>
+        <li>
+          <strong>Expenditure Method</strong> – Sum all expenditures on final goods and services.
+          <div class="formula">GDP = C + I + G + (X – M)
+C=Consumption | I=Investment | G=Govt Spending | X=Exports | M=Imports</div>
+        </li>
+      </ol>
+      <h3>Importance of National Income</h3>
+      <ul>
+        <li>Measures economic growth and living standards</li>
+        <li>Helps in comparing economies across countries (GDP per capita)</li>
+        <li>Guides government policy (budget, taxation, welfare programs)</li>
+        <li>Helps businesses forecast demand and plan production</li>
+        <li>Used by international bodies (IMF, World Bank) for aid and loans</li>
+      </ul>
+    </div>
+  </div>
+/section>
+
+<!-- =========== UNIT II =========== -->
+<section class="unit" id="unit2">
+  <div class="unit-header">
+    <span class="unit-badge">UNIT II</span>
+    <span class="unit-title">Demand, Supply &amp; Elasticity</span>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="expandUnit('unit2')">Expand All</button>
+    <button class="btn btn-outline" onclick="collapseUnit('unit2')">Collapse All</button>
+  </div>
+
+  <div class="section-label">Short Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S1</span>
+      <span class="q-text">Explain the Law of Demand</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The <strong>Law of Demand</strong> states that, <em>ceteris paribus</em> (all else equal), as the price of a good increases, the quantity demanded decreases, and vice versa.</p>
+      <div class="formula">Qd = f(P) — Demand function (inverse relationship)</div>
+      <h3>Exceptions (Demand does NOT follow this law)</h3>
+      <ul>
+        <li><strong>Giffen Goods</strong> – Inferior goods where demand rises as price rises (e.g., cheap staples for the poor)</li>
+        <li><strong>Veblen/Status Goods</strong> – Luxury goods desired more at higher prices (e.g., Rolex watches)</li>
+        <li><strong>Expected Price Rise</strong> – People buy more now if they expect prices to rise further</li>
+        <li><strong>Necessities</strong> – Demand for life-saving medicines may be inelastic regardless of price</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S4/S9</span>
+      <span class="q-text">What is Elasticity of Demand? Types of Price Elasticity</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Elasticity of Demand</strong> measures the responsiveness of quantity demanded to a change in one of its determinants (price, income, advertising, cross prices).</p>
+      <div class="formula">Price Elasticity (PED) = % Change in Qty Demanded / % Change in Price</div>
+      <table>
+        <tr><th>Type</th><th>Ed Value</th><th>Meaning</th><th>Example</th></tr>
+        <tr><td>Perfectly Elastic</td><td>Ed = ∞</td><td>Any price rise → demand falls to zero</td><td>Homogeneous commodity in perfect competition</td></tr>
+        <tr><td>Perfectly Inelastic</td><td>Ed = 0</td><td>Price change has no effect on demand</td><td>Insulin for diabetics</td></tr>
+        <tr><td>Relatively Elastic</td><td>Ed > 1</td><td>% change in Qd > % change in price</td><td>Luxury cars, tourism</td></tr>
+        <tr><td>Relatively Inelastic</td><td>Ed &lt; 1</td><td>% change in Qd &lt; % change in price</td><td>Salt, petrol</td></tr>
+        <tr><td>Unit Elastic</td><td>Ed = 1</td><td>Both change by equal %</td><td>Theoretical benchmark</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S10/S11/S12</span>
+      <span class="q-text">Income, Advertising &amp; Cross Elasticity of Demand</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>Income Elasticity (YED)</h3>
+      <div class="formula">YED = % Change in Qty Demanded / % Change in Income</div>
+      <ul>
+        <li>YED > 0 → <strong>Normal goods</strong> (demand rises with income)</li>
+        <li>YED &lt; 0 → <strong>Inferior goods</strong> (demand falls as income rises)</li>
+        <li>YED > 1 → <strong>Luxury goods</strong></li>
+      </ul>
+      <h3>Advertising (Promotional) Elasticity</h3>
+      <div class="formula">AED = % Change in Qty Demanded / % Change in Advertising Expenditure</div>
+      <p>Measures the impact of marketing spend on sales. Higher AED → advertising is effective.</p>
+      <h3>Cross Elasticity (CED)</h3>
+      <div class="formula">CED = % Change in Qty Demanded of Good A / % Change in Price of Good B</div>
+      <ul>
+        <li>CED > 0 → <strong>Substitutes</strong> (e.g., Pepsi &amp; Coca-Cola)</li>
+        <li>CED &lt; 0 → <strong>Complements</strong> (e.g., Cars &amp; Petrol)</li>
+        <li>CED = 0 → <strong>Unrelated goods</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S5</span>
+      <span class="q-text">Determinants of Demand</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <ul>
+        <li><strong>Price of the good</strong> – Primary determinant (inverse relationship)</li>
+        <li><strong>Income of consumers</strong> – Higher income → higher demand for normal goods</li>
+        <li><strong>Prices of related goods</strong> – Substitutes and complements</li>
+        <li><strong>Taste &amp; Preferences</strong> – Fashion, trends, cultural factors</li>
+        <li><strong>Population size &amp; composition</strong> – More people = more demand</li>
+        <li><strong>Advertising &amp; Promotion</strong> – Can shift demand curve rightward</li>
+        <li><strong>Future Price Expectations</strong> – Expected price rise increases present demand</li>
+        <li><strong>Season &amp; Weather</strong> – Umbrellas in monsoon, ACs in summer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Long Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L7</span>
+      <span class="q-text">Demand Forecasting Methods</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Demand Forecasting</strong> is the estimation of future demand for a product over a specified time period — essential for production planning, inventory, and investment decisions.</p>
+      <h3>Survey/Qualitative Methods</h3>
+      <ul>
+        <li><strong>Consumer Survey Method</strong> – Directly ask buyers about future purchase intentions</li>
+        <li><strong>Expert Opinion (Delphi Method)</strong> – Consensus of industry experts through structured rounds</li>
+        <li><strong>Sales Force Composite</strong> – Aggregate estimates from sales team members in the field</li>
+      </ul>
+      <h3>Statistical/Quantitative Methods</h3>
+      <ul>
+        <li><strong>Trend Projection / Time Series</strong> – Extrapolate past data trends into the future</li>
+        <li><strong>Regression Analysis</strong> – Model demand as a function of key variables (price, income, etc.)</li>
+        <li><strong>Barometric Method</strong> – Use leading economic indicators as demand signals</li>
+        <li><strong>Market Experiment Method</strong> – Test market a product in a limited area to gauge demand</li>
+        <li><strong>Econometric Models</strong> – Complex multi-variable mathematical models</li>
+      </ul>
+      <div class="note">For exams, know at least 4–5 methods with brief explanations of each.</div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L9</span>
+      <span class="q-text">Significance of Elasticity of Demand in Managerial Decision Making</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <ul>
+        <li><strong>Pricing Decisions</strong> – If demand is inelastic, a firm can raise prices to increase revenue. If elastic, lowering price increases total revenue.</li>
+        <li><strong>Price Discrimination</strong> – Charge different prices in markets with different elasticities</li>
+        <li><strong>Product Mix &amp; Bundling</strong> – Products with inelastic demand can be bundled with elastic ones</li>
+        <li><strong>Advertising Budget</strong> – AED helps determine how much to spend on promotion</li>
+        <li><strong>Government Policy</strong> – Tax inelastic goods (petrol, tobacco) for higher revenue without large demand fall</li>
+        <li><strong>Export-Import Decisions</strong> – Elasticity of exports/imports affects trade balance</li>
+        <li><strong>Wage Determination</strong> – Labor demand elasticity influences wage negotiations</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+<!-- =========== UNIT III =========== -->
+<section class="unit" id="unit3">
+  <div class="unit-header">
+    <span class="unit-badge">UNIT III</span>
+    <span class="unit-title">Production, Cost &amp; Market Structures</span>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="expandUnit('unit3')">Expand All</button>
+    <button class="btn btn-outline" onclick="collapseUnit('unit3')">Collapse All</button>
+  </div>
+
+  <div class="section-label">Short Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S1</span>
+      <span class="q-text">Define Production Function</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>A <strong>Production Function</strong> is the technical relationship between inputs (factors of production) and the maximum output that can be produced from them in a given state of technology.</p>
+      <div class="formula">Q = f(L, K, T, E...)
+Q=Output | L=Labour | K=Capital | T=Technology | E=Entrepreneurship</div>
+      <ul>
+        <li><strong>Short-run Production Function</strong> – At least one input is fixed (usually capital)</li>
+        <li><strong>Long-run Production Function</strong> – All inputs are variable</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S2</span>
+      <span class="q-text">What is CVP (Cost-Volume-Profit) Analysis / BEP?</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>CVP Analysis</strong> examines the relationship between cost, sales volume, and profit to determine what level of activity the firm must reach to cover all costs (break-even).</p>
+      <div class="formula">BEP (Units) = Fixed Cost / Contribution per Unit
+BEP (₹) = Fixed Cost / P/V Ratio
+P/V Ratio = Contribution / Sales = (Sales – Variable Cost) / Sales</div>
+      <div class="highlight">
+        <strong>Contribution per Unit</strong> = Selling Price – Variable Cost per Unit
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S6/S7</span>
+      <span class="q-text">Cobb-Douglas Production Function</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The <strong>Cobb-Douglas Production Function</strong> is a widely used empirical production function that shows constant or varying returns to scale.</p>
+      <div class="formula">Q = A · L^α · K^β
+Q = Output | A = Total Factor Productivity | L = Labour | K = Capital
+α = output elasticity of Labour | β = output elasticity of Capital</div>
+      <h3>Returns to Scale</h3>
+      <ul>
+        <li>If <strong>α + β = 1</strong> → Constant Returns to Scale (CRS)</li>
+        <li>If <strong>α + β > 1</strong> → Increasing Returns to Scale (IRS)</li>
+        <li>If <strong>α + β &lt; 1</strong> → Decreasing Returns to Scale (DRS)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Long Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L4</span>
+      <span class="q-text">BEP Numerical — Raj &amp; Co. (PV Ratio 20%, Fixed Cost ₹36,000, SP ₹150)</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Given:</strong> PV Ratio = 20%, Fixed Cost = ₹36,000, Selling Price per unit = ₹150</p>
+      <h3>Step 1: BEP in Rupees</h3>
+      <div class="formula">BEP (₹) = Fixed Cost / PV Ratio = 36,000 / 20% = 36,000 / 0.20 = ₹1,80,000</div>
+      <h3>Step 2: BEP in Units</h3>
+      <div class="formula">BEP (Units) = BEP (₹) / Selling Price = 1,80,000 / 150 = 1,200 Units</div>
+      <h3>Step 3: Variable Cost per Unit</h3>
+      <div class="formula">PV Ratio = Contribution / Sales
+0.20 = Contribution / 150
+Contribution per unit = 0.20 × 150 = ₹30
+Variable Cost per unit = SP – Contribution = 150 – 30 = ₹120</div>
+      <h3>Step 4: Contribution per Unit</h3>
+      <div class="formula">Contribution per Unit = ₹30 (calculated above)</div>
+      <div class="highlight">
+        <strong>Summary:</strong> BEP = ₹1,80,000 | BEP Units = 1,200 | Variable Cost = ₹120/unit | Contribution = ₹30/unit
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L3</span>
+      <span class="q-text">Monopoly, Duopoly, Oligopoly &amp; Imperfect Competition</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Market</th><th>Sellers</th><th>Price Control</th><th>Example</th></tr>
+        <tr><td><strong>Monopoly</strong></td><td>One</td><td>Full (Price Maker)</td><td>IRCTC (train ticketing)</td></tr>
+        <tr><td><strong>Duopoly</strong></td><td>Two</td><td>High (mutual watch)</td><td>Boeing &amp; Airbus</td></tr>
+        <tr><td><strong>Oligopoly</strong></td><td>Few (3–10)</td><td>High (interdependence)</td><td>Telecom: Jio, Airtel, Vi</td></tr>
+        <tr><td><strong>Monopolistic Competition</strong></td><td>Many</td><td>Some (product differentiation)</td><td>Toothpaste, shoes, restaurants</td></tr>
+        <tr><td><strong>Perfect Competition</strong></td><td>Infinite</td><td>None (Price Taker)</td><td>Agricultural markets</td></tr>
+      </table>
+      <h3>Kinked Demand Curve (Oligopoly)</h3>
+      <p>In oligopoly, the demand curve has a <strong>kink</strong> at the prevailing price. If a firm raises price, rivals don't follow (demand becomes elastic above kink). If it lowers price, rivals match (demand becomes inelastic below kink). This explains <em>price rigidity</em> in oligopolistic markets.</p>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L6</span>
+      <span class="q-text">Cost Concepts &amp; Types of Costs</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>Cost Type</th><th>Definition</th><th>Example</th></tr>
+        <tr><td><strong>Fixed Cost (FC)</strong></td><td>Does not change with output</td><td>Rent, salaries</td></tr>
+        <tr><td><strong>Variable Cost (VC)</strong></td><td>Changes with output</td><td>Raw materials, wages</td></tr>
+        <tr><td><strong>Total Cost (TC)</strong></td><td>TC = FC + VC</td><td>All costs combined</td></tr>
+        <tr><td><strong>Marginal Cost (MC)</strong></td><td>Cost of producing one more unit</td><td>ΔTC / ΔQ</td></tr>
+        <tr><td><strong>Average Total Cost (ATC)</strong></td><td>TC per unit</td><td>TC / Q</td></tr>
+        <tr><td><strong>Average Variable Cost (AVC)</strong></td><td>VC per unit</td><td>VC / Q</td></tr>
+        <tr><td><strong>Opportunity Cost</strong></td><td>Value of best alternative foregone</td><td>Salary forgone to start a business</td></tr>
+        <tr><td><strong>Sunk Cost</strong></td><td>Already incurred, not recoverable</td><td>Money spent on market research</td></tr>
+        <tr><td><strong>Explicit Cost</strong></td><td>Actual cash payments</td><td>Wages, rent, raw materials</td></tr>
+        <tr><td><strong>Implicit Cost</strong></td><td>Non-cash opportunity costs</td><td>Owner's own time and capital</td></tr>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- =========== UNIT IV =========== -->
+<section class="unit" id="unit4">
+  <div class="unit-header">
+    <span class="unit-badge">UNIT IV</span>
+    <span class="unit-title">Accounting Fundamentals</span>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="expandUnit('unit4')">Expand All</button>
+    <button class="btn btn-outline" onclick="collapseUnit('unit4')">Collapse All</button>
+  </div>
+
+  <div class="section-label">Short Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S1/S7/S8</span>
+      <span class="q-text">Define Accounting / Accounting Concepts / Accounting Conventions</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Accounting</strong> is the systematic process of recording, classifying, summarizing, and interpreting financial transactions to provide useful information for decision-making.</p>
+      <h3>Accounting Concepts (Principles / Assumptions)</h3>
+      <ul>
+        <li><strong>Business Entity Concept</strong> – Business is separate from its owner</li>
+        <li><strong>Going Concern Concept</strong> – Business will continue indefinitely</li>
+        <li><strong>Money Measurement Concept</strong> – Only monetary transactions are recorded</li>
+        <li><strong>Accrual Concept</strong> – Income/expenses are recognized when earned/incurred, not when cash flows</li>
+        <li><strong>Matching Concept</strong> – Expenses are matched to revenues of the same period</li>
+        <li><strong>Cost Concept</strong> – Assets recorded at historical (original) cost</li>
+        <li><strong>Dual Aspect Concept</strong> – Every transaction has two effects (Double Entry)</li>
+        <li><strong>Accounting Period Concept</strong> – Financial results measured for fixed periods (usually 1 year)</li>
+      </ul>
+      <h3>Accounting Conventions</h3>
+      <ul>
+        <li><strong>Consistency</strong> – Same methods used year after year for comparability</li>
+        <li><strong>Conservatism (Prudence)</strong> – Anticipate no profit but provide for all losses</li>
+        <li><strong>Materiality</strong> – Only significant items need to be separately disclosed</li>
+        <li><strong>Full Disclosure</strong> – All relevant financial information must be disclosed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S2</span>
+      <span class="q-text">Explain the Accounting Cycle</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The <strong>Accounting Cycle</strong> is the step-by-step process of recording and processing all financial transactions of a firm during an accounting period.</p>
+      <ol>
+        <li><strong>Identify Transactions</strong> – Source documents (invoices, receipts)</li>
+        <li><strong>Journal Entry</strong> – Record each transaction with debit and credit</li>
+        <li><strong>Ledger Posting</strong> – Transfer journal entries to individual accounts (T-accounts)</li>
+        <li><strong>Trial Balance</strong> – Verify that total debits = total credits</li>
+        <li><strong>Adjusting Entries</strong> – Accrue revenues/expenses, depreciation, etc.</li>
+        <li><strong>Adjusted Trial Balance</strong> – Updated trial balance after adjustments</li>
+        <li><strong>Financial Statements</strong> – Prepare P&amp;L Account and Balance Sheet</li>
+        <li><strong>Closing Entries</strong> – Close temporary accounts; reset for next period</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S4/S5</span>
+      <span class="q-text">Types of Accounts &amp; Double Entry Bookkeeping</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>Three Types of Accounts (Golden Rules)</h3>
+      <table>
+        <tr><th>Type</th><th>Examples</th><th>Debit Rule</th><th>Credit Rule</th></tr>
+        <tr><td><strong>Personal Account</strong></td><td>Debtors, creditors, bank</td><td>Debit the receiver</td><td>Credit the giver</td></tr>
+        <tr><td><strong>Real Account</strong></td><td>Cash, land, machinery</td><td>Debit what comes in</td><td>Credit what goes out</td></tr>
+        <tr><td><strong>Nominal Account</strong></td><td>Salaries, rent, sales</td><td>Debit all expenses/losses</td><td>Credit all incomes/gains</td></tr>
+      </table>
+      <h3>Double Entry System</h3>
+      <p>Every transaction has <strong>two aspects</strong>: for every debit, there is an equal and opposite credit. This ensures the accounting equation <strong>Assets = Liabilities + Capital</strong> always balances.</p>
+      <div class="formula">Assets = Liabilities + Owner's Equity (Capital)</div>
+    </div>
+  </div>
+
+  <div class="section-label">Long Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L4</span>
+      <span class="q-text">Accounting Equation with Example</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p>The <strong>Accounting Equation</strong> represents the fundamental relationship: <strong>Assets = Liabilities + Capital</strong>. Every transaction preserves this balance.</p>
+      <h3>Example Transactions</h3>
+      <p>Rahul starts a business with ₹1,00,000 cash:</p>
+      <table>
+        <tr><th>Transaction</th><th>Assets</th><th>= Liabilities</th><th>+ Capital</th></tr>
+        <tr><td>1. Started business with ₹1,00,000</td><td>Cash +1,00,000</td><td>0</td><td>+1,00,000</td></tr>
+        <tr><td>2. Bought furniture ₹20,000 cash</td><td>Furniture +20,000; Cash –20,000</td><td>0</td><td>0</td></tr>
+        <tr><td>3. Purchased goods ₹30,000 on credit</td><td>Stock +30,000</td><td>Creditors +30,000</td><td>0</td></tr>
+        <tr><td>4. Sold goods (cost ₹10,000) for ₹15,000 cash</td><td>Cash +15,000; Stock –10,000</td><td>0</td><td>+5,000 profit</td></tr>
+        <tr><td><strong>Balance</strong></td><td><strong>₹1,15,000</td><td>₹30,000</td><td>₹85,000</strong></td></tr>
+      </table>
+      <div class="formula">Check: Assets (1,15,000) = Liabilities (30,000) + Capital (85,000) ✓</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- =========== UNIT V =========== -->
+<section class="unit" id="unit5">
+  <div class="unit-header">
+    <span class="unit-badge">UNIT V</span>
+    <span class="unit-title">Ratio Analysis</span>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="expandUnit('unit5')">Expand All</button>
+    <button class="btn btn-outline" onclick="collapseUnit('unit5')">Collapse All</button>
+  </div>
+
+  <div class="section-label">Short Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S1/S2</span>
+      <span class="q-text">Define Ratio Analysis &amp; its Significance</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Ratio Analysis</strong> is a quantitative technique of financial analysis that involves computing mathematical relationships between figures from financial statements (Balance Sheet and P&amp;L Account) to evaluate a firm's performance, liquidity, efficiency, and solvency.</p>
+      <h3>Significance</h3>
+      <ul>
+        <li>Measures <strong>liquidity</strong> — can the firm meet short-term obligations?</li>
+        <li>Assesses <strong>profitability</strong> — how efficiently does it generate profit?</li>
+        <li>Evaluates <strong>efficiency</strong> — how well are assets and working capital utilized?</li>
+        <li>Examines <strong>solvency/leverage</strong> — can it meet long-term debt obligations?</li>
+        <li>Enables <strong>trend analysis</strong> over multiple years</li>
+        <li>Facilitates <strong>inter-firm comparison</strong> and industry benchmarking</li>
+      </ul>
+      <h3>Limitations</h3>
+      <ul>
+        <li>Based on historical data — not forward-looking</li>
+        <li>Ignores price-level changes (inflation distorts comparisons)</li>
+        <li>Different accounting policies make inter-firm comparison unreliable</li>
+        <li>A single ratio is meaningless without context or comparison</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">S5</span>
+      <span class="q-text">Calculate Stock Turnover Ratio (Opening Stock 29,000; Closing 31,000; Sales 3,20,000; GP 25%)</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>Step 1: Calculate Cost of Goods Sold</h3>
+      <div class="formula">Gross Profit = 25% of Sales = 25% × 3,20,000 = ₹80,000
+COGS = Sales – Gross Profit = 3,20,000 – 80,000 = ₹2,40,000</div>
+      <h3>Step 2: Average Stock</h3>
+      <div class="formula">Average Stock = (Opening Stock + Closing Stock) / 2
+= (29,000 + 31,000) / 2 = 60,000 / 2 = ₹30,000</div>
+      <h3>Step 3: Stock Turnover Ratio</h3>
+      <div class="formula">Stock Turnover Ratio = COGS / Average Stock = 2,40,000 / 30,000 = 8 Times</div>
+      <div class="highlight">
+        <strong>Interpretation:</strong> Inventory is turned over 8 times a year — the firm sells and replenishes its stock every 45 days (360/8).
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Long Answer Questions</div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L1</span>
+      <span class="q-text">Different Types of Financial Ratio Analysis</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>1. Liquidity Ratios — Short-term solvency</h3>
+      <table>
+        <tr><th>Ratio</th><th>Formula</th><th>Ideal</th></tr>
+        <tr><td>Current Ratio</td><td>Current Assets / Current Liabilities</td><td>2:1</td></tr>
+        <tr><td>Quick Ratio (Acid Test)</td><td>(CA – Inventory – Prepaid) / CL</td><td>1:1</td></tr>
+        <tr><td>Cash Ratio</td><td>Cash + Marketable Securities / CL</td><td>0.5:1</td></tr>
+      </table>
+      <h3>2. Profitability Ratios — Earnings efficiency</h3>
+      <table>
+        <tr><th>Ratio</th><th>Formula</th></tr>
+        <tr><td>Gross Profit Ratio</td><td>(Gross Profit / Sales) × 100</td></tr>
+        <tr><td>Net Profit Ratio</td><td>(Net Profit / Sales) × 100</td></tr>
+        <tr><td>Return on Assets (ROA)</td><td>(Net Profit / Total Assets) × 100</td></tr>
+        <tr><td>Return on Equity (ROE)</td><td>(Net Profit / Shareholders' Equity) × 100</td></tr>
+        <tr><td>EBITDA Margin</td><td>EBITDA / Sales × 100</td></tr>
+      </table>
+      <h3>3. Activity / Efficiency Ratios — Asset utilization</h3>
+      <table>
+        <tr><th>Ratio</th><th>Formula</th></tr>
+        <tr><td>Inventory Turnover</td><td>COGS / Average Inventory</td></tr>
+        <tr><td>Debtors Turnover</td><td>Credit Sales / Average Debtors</td></tr>
+        <tr><td>Creditors Turnover</td><td>Credit Purchases / Average Creditors</td></tr>
+        <tr><td>Fixed Asset Turnover</td><td>Net Sales / Net Fixed Assets</td></tr>
+        <tr><td>Working Capital Turnover</td><td>Net Sales / Working Capital</td></tr>
+      </table>
+      <h3>4. Solvency / Leverage Ratios — Long-term financial health</h3>
+      <table>
+        <tr><th>Ratio</th><th>Formula</th></tr>
+        <tr><td>Debt-to-Equity Ratio</td><td>Total Debt / Shareholders' Equity</td></tr>
+        <tr><td>Interest Coverage Ratio</td><td>EBIT / Interest Expense</td></tr>
+        <tr><td>Debt Ratio</td><td>Total Debt / Total Assets</td></tr>
+        <tr><td>Net Worth to Debt</td><td>Net Worth / Total Debt</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L2</span>
+      <span class="q-text">Calculate 6 Ratios from Given Data (Sales 5,20,000; COGS 19,20,000; Net Profit 3,60,000...)</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <p><strong>Given Data:</strong> Sales = ₹5,20,000 | Cost of Sales = ₹19,20,000 | Net Profit = ₹3,60,000 | Inventory = ₹8,00,000 | Other Current Assets = ₹7,60,000 | Fixed Assets = ₹14,40,000 | Net Worth = ₹15,00,000 | Debt = ₹9,00,000 | Current Liabilities = ₹6,00,000</p>
+      <div class="note">Note: COGS likely means ₹3,20,000 based on context — using figures as stated. Gross Profit = Sales – COGS.</div>
+      <div class="formula">Gross Profit = Sales – Cost of Sales
+= 5,20,000 – 3,20,000 = ₹2,00,000 (assuming COGS = 3,20,000)</div>
+      <h3>i) Gross Profit Ratio</h3>
+      <div class="formula">GP Ratio = (Gross Profit / Sales) × 100 = (2,00,000 / 5,20,000) × 100 = 38.46%</div>
+      <h3>ii) Net Profit Ratio</h3>
+      <div class="formula">NP Ratio = (Net Profit / Sales) × 100 = (3,60,000 / 5,20,000) × 100 = 69.23%</div>
+      <h3>iii) Return on Total Assets</h3>
+      <div class="formula">Total Assets = Inventory + Other CA + Fixed Assets = 8,00,000 + 7,60,000 + 14,40,000 = ₹30,00,000
+ROTA = (Net Profit / Total Assets) × 100 = (3,60,000 / 30,00,000) × 100 = 12%</div>
+      <h3>iv) Inventory Turnover</h3>
+      <div class="formula">Inventory Turnover = COGS / Inventory = 3,20,000 / 8,00,000 = 0.4 Times</div>
+      <h3>v) Working Capital Turnover</h3>
+      <div class="formula">Working Capital = (Inventory + Other CA) – CL = (8,00,000 + 7,60,000) – 6,00,000 = ₹9,60,000
+WC Turnover = Sales / Working Capital = 5,20,000 / 9,60,000 = 0.54 Times</div>
+      <h3>vi) Net Worth to Debt</h3>
+      <div class="formula">Net Worth to Debt = Net Worth / Debt = 15,00,000 / 9,00,000 = 1.67 : 1</div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L3</span>
+      <span class="q-text">Debtors Turnover &amp; Debt Collection Period (Sales ₹50L, 60% credit; Debtors opening ₹4L, closing ₹3L)</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <h3>Step 1: Credit Sales</h3>
+      <div class="formula">Total Sales = ₹50,00,000
+Credit Sales = 60% × 50,00,000 = ₹30,00,000</div>
+      <h3>Step 2: Average Debtors</h3>
+      <div class="formula">Average Debtors = (Opening Debtors + Closing Debtors) / 2
+= (4,00,000 + 3,00,000) / 2 = ₹3,50,000</div>
+      <h3>Step 3: Debtors Turnover Ratio</h3>
+      <div class="formula">Debtors Turnover = Credit Sales / Average Debtors
+= 30,00,000 / 3,50,000 = 8.57 Times</div>
+      <h3>Step 4: Debt Collection Period</h3>
+      <div class="formula">Debt Collection Period = 365 / Debtors Turnover Ratio
+= 365 / 8.57 = 42.6 Days ≈ 43 Days</div>
+      <div class="highlight">
+        <strong>Interpretation:</strong> The firm collects its credit sales in approximately <strong>43 days</strong>. A lower collection period indicates better credit management.
+      </div>
+    </div>
+  </div>
+
+  <div class="q-card" onclick="toggle(this)">
+    <div class="q-header">
+      <span class="q-number">L4</span>
+      <span class="q-text">Important Users of Ratio Analysis</span>
+      <span class="q-toggle">▼</span>
+    </div>
+    <div class="q-body">
+      <table>
+        <tr><th>User</th><th>Why they use ratios</th><th>Key ratios of interest</th></tr>
+        <tr><td><strong>Management</strong></td><td>Internal performance monitoring and decision-making</td><td>All ratios</td></tr>
+        <tr><td><strong>Investors / Shareholders</strong></td><td>Assess profitability and returns</td><td>EPS, ROE, Dividend Payout</td></tr>
+        <tr><td><strong>Banks / Creditors</strong></td><td>Evaluate ability to repay loans</td><td>Current Ratio, Debt-Equity, Interest Coverage</td></tr>
+        <tr><td><strong>Suppliers / Trade Creditors</strong></td><td>Assess short-term payment ability</td><td>Current Ratio, Quick Ratio</td></tr>
+        <tr><td><strong>Government / Tax Authorities</strong></td><td>Verify income, compliance</td><td>Profit ratios, asset ratios</td></tr>
+        <tr><td><strong>Employees</strong></td><td>Job security, bonus assessment</td><td>Profitability, stability ratios</td></tr>
+        <tr><td><strong>Financial Analysts</strong></td><td>Investment recommendations</td><td>P/E ratio, ROA, liquidity ratios</td></tr>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<script>
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+  function expandUnit(unitId) {
+    document.querySelectorAll('#' + unitId + ' .q-card').forEach(c => c.classList.add('open'));
+  }
+  function collapseUnit(unitId) {
+    document.querySelectorAll('#' + unitId + ' .q-card').forEach(c => c.classList.remove('open'));
+  }
+</script>
+</body>
+</html>
         body {
             font-family: 'Segoe UI', sans-serif;
             background: #0a0a0a;
